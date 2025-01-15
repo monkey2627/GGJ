@@ -6,31 +6,42 @@ public class LightingController : MonoBehaviour
 {
     private Light light;
     private float maxRange = 86.5f;
-    private float maxIntensity = 1.6f;
+    private float maxIntensity = 0.76f;
     private float gap = 0.1f;
     private float timer = 0;
+    private bool start;
     // Start is called before the first frame update
     void Start(){
         light = gameObject.GetComponent<Light>();
+        light.intensity = 0.2f;
+        start = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > gap)
+        if (start)
         {
-            if ( light.range < maxRange)
-            {
-                light.range += 10f;
-            }
-            if( light.intensity < maxIntensity)
-            {
-                light.intensity += 0.2f;
-            }
-            timer = 0;
+            timer += Time.deltaTime;
+                    if(timer > gap)
+                    {
+                        if ( light.range < maxRange)
+                        {
+                            light.range += 10f;
+                        }
+                        if( light.intensity < maxIntensity)
+                        {
+                            light.intensity += 0.01f;
+                        }
+                        timer = 0;
 
+                    }
         }
+        
 
+    }
+    public void StartLight()
+    {
+        start = true;
     }
 }
