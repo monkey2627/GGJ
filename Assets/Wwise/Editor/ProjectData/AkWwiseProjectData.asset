@@ -588,8 +588,8 @@ MonoBehaviour:
         guid: cbb0fc13b15c05498602fb697ed1d555
       Path: Events\Default Work Unit\World\Ambient\Ambient_GrandmaWork\Ambient_GrandmaWork_Stop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Ambient_HouseMoan
       guid: 8a856457f0947e498387b044a5b7ca33
       id: 138515867
@@ -663,8 +663,8 @@ MonoBehaviour:
         guid: 24ace6a166f3a241b8192b47614842e7
       Path: Events\Default Work Unit\World\Ambient\Ambient_HouseMoan\Ambient_HouseMoan_Stop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Ambient_LoomWork
       guid: 056445904fcf85419075c69bf0a8949f
       id: 3720737270
@@ -738,8 +738,8 @@ MonoBehaviour:
         guid: 2935bf04746e4b4e80b3072c231223bd
       Path: Events\Default Work Unit\World\Ambient\Ambient_LoomWork\Ambient_LoomWork_Stop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Ambient_MachineWork
       guid: cb60187d76b1774887d4f00388b8b091
       id: 926684690
@@ -813,8 +813,8 @@ MonoBehaviour:
         guid: 439e7f3d0c181248abfde7ce9f655cc5
       Path: Events\Default Work Unit\World\Ambient\Ambient_MachineWork\Ambient_MachineWork_Stop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Music
       guid: 33f98c79e2524e4a840a4df1fe4a0297
       id: 3991942870
@@ -856,8 +856,8 @@ MonoBehaviour:
         guid: ba461d98a92b4f44b450aa08d65176db
       Path: Events\Default Work Unit\Non-World\Music\Music_Explore
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Music_Stop
       guid: c90c809f272fe244909c2e16ada90ca9
       id: 3227181061
@@ -879,8 +879,8 @@ MonoBehaviour:
         guid: c90c809f272fe244909c2e16ada90ca9
       Path: Events\Default Work Unit\Non-World\Music\Music_Stop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Non-World
       guid: 259000d5effbb44aa575842500f7ae79
       id: 838047381
@@ -965,8 +965,8 @@ MonoBehaviour:
         guid: 335e90a41f0a904094c143107d9ab6c0
       Path: Events\Default Work Unit\World\Object\Object_Loom\Object_Loom_Change
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.93362814
+      minDuration: 0.93362814
     - name: Object_Loom_Finish
       guid: 18f6b2ad13ce6c4696a6823908a53278
       id: 631574478
@@ -991,8 +991,8 @@ MonoBehaviour:
         guid: 18f6b2ad13ce6c4696a6823908a53278
       Path: Events\Default Work Unit\World\Object\Object_Loom\Object_Loom_Finish
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.5165759
+      minDuration: 1.5165759
     - name: Object_Order
       guid: 514a0dff9ba5d24c9e011ec57e51a2e7
       id: 2596289001
@@ -1040,8 +1040,8 @@ MonoBehaviour:
         guid: 39304be906aa6047aa596427d3b8b397
       Path: Events\Default Work Unit\World\Object\Object_Order\Object_Order_Appear
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.9926984
+      minDuration: 1.9926984
     - name: Object_Order_Finish
       guid: 318b692d219d5b46b82cd53436a075a5
       id: 2774872329
@@ -1066,8 +1066,8 @@ MonoBehaviour:
         guid: 318b692d219d5b46b82cd53436a075a5
       Path: Events\Default Work Unit\World\Object\Object_Order\Object_Order_Finish
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.998458
+      minDuration: 0.998458
     - name: Object_Order_Miss
       guid: 049283d36acbec42ad2c2bf98fdcf298
       id: 3259942628
@@ -1092,8 +1092,8 @@ MonoBehaviour:
         guid: 049283d36acbec42ad2c2bf98fdcf298
       Path: Events\Default Work Unit\World\Object\Object_Order\Object_Order_Miss
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 4
+      minDuration: 4
     - name: Object_Order_Move
       guid: 23c1a37020bc26499297e41d0b0bf75e
       id: 2907906771
@@ -1118,8 +1118,8 @@ MonoBehaviour:
         guid: 23c1a37020bc26499297e41d0b0bf75e
       Path: Events\Default Work Unit\World\Object\Object_Order\Object_Order_Move
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.9929478
+      minDuration: 0.9929478
     - name: Player
       guid: ec966d58ae7de5408919ca3782ab04ff
       id: 1069431850
@@ -1161,8 +1161,8 @@ MonoBehaviour:
         guid: c736d3468c8aee4f936768fbfab36df6
       Path: Events\Default Work Unit\World\Player\Player_Drop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.028322
+      minDuration: 1.028322
     - name: Player_Grab
       guid: 817460cb11b7904488c4bb9432cd8397
       id: 816303795
@@ -1184,8 +1184,8 @@ MonoBehaviour:
         guid: 817460cb11b7904488c4bb9432cd8397
       Path: Events\Default Work Unit\World\Player\Player_Grab
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.1348526
+      minDuration: 1.1348526
     - name: Player_Move
       guid: 5727af1c8f230f489333ce900ddda91e
       id: 2248092158
@@ -1230,8 +1230,8 @@ MonoBehaviour:
         guid: 1f742246083c6b43b1e5cf87a97441bf
       Path: Events\Default Work Unit\World\Player\Player_Stop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: STOP_ALL
       guid: d017fa676c8d274e9bd63d97dfa791f0
       id: 452547817
@@ -1247,8 +1247,8 @@ MonoBehaviour:
         guid: d017fa676c8d274e9bd63d97dfa791f0
       Path: Events\Default Work Unit\STOP_ALL
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: UI
       guid: a50f3ebf1eb9bb43b3d8b7215643c4b0
       id: 1551306167
@@ -1290,8 +1290,8 @@ MonoBehaviour:
         guid: 6032ea53fa460041aaa1ec992f9a0d83
       Path: Events\Default Work Unit\Non-World\UI\UI_Confirm
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.5452539
+      minDuration: 0.45850202
     - name: UI_Game
       guid: a4b5f0e5069642428d6b29cebbd36c61
       id: 649099900
@@ -1339,8 +1339,8 @@ MonoBehaviour:
         guid: e3880f2322f3574bba45c1ba4c288441
       Path: Events\Default Work Unit\Non-World\UI\UI_Game\UI_Game_Award
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.5
+      minDuration: 1.5
     - name: UI_Game_Begin
       guid: 72617d3ee00c4a46aeb0d22dcc8c37c9
       id: 921872670
@@ -1365,8 +1365,8 @@ MonoBehaviour:
         guid: 72617d3ee00c4a46aeb0d22dcc8c37c9
       Path: Events\Default Work Unit\Non-World\UI\UI_Game\UI_Game_Begin
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 3.5339909
+      minDuration: 3.5339909
     - name: UI_Game_Fail
       guid: bc1335a90d275244bade930632beb393
       id: 150810275
@@ -1391,8 +1391,8 @@ MonoBehaviour:
         guid: bc1335a90d275244bade930632beb393
       Path: Events\Default Work Unit\Non-World\UI\UI_Game\UI_Game_Fail
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.9811338
+      minDuration: 1.9811338
     - name: UI_Game_Win
       guid: ad0671cd592cb24ca968590de9123d88
       id: 380860655
@@ -1417,8 +1417,8 @@ MonoBehaviour:
         guid: ad0671cd592cb24ca968590de9123d88
       Path: Events\Default Work Unit\Non-World\UI\UI_Game\UI_Game_Win
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 3
+      minDuration: 3
     - name: World
       guid: dbdf88aafc1a374cbec422b417c64452
       id: 2609808943
@@ -1716,7 +1716,7 @@ MonoBehaviour:
         guid: 389871bc07b92f4b8f3f8f3bd0c05cca
       Path: Triggers\Default Work Unit\Award
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 030000000500000006000000080000000d0000000e0000001800000019000000250000002600000027000000290000002c0000002d0000002f000000340000003700000038000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

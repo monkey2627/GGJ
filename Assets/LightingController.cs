@@ -4,44 +4,38 @@ using UnityEngine;
 
 public class LightingController : MonoBehaviour
 {
-    private Light light;
+    public static LightingController instance;
+    public  Light pointLIght;
+    public  Light spotLight;
     private float maxRange = 86.5f;
     private float maxIntensity = 0.76f;
     private float gap = 0.1f;
     private float timer = 0;
     private bool start;
+    private void Awake()
+    {
+        instance = new LightingController();
+        Debug.Log("1");
+    }
     // Start is called before the first frame update
-    void Start(){
-        light = gameObject.GetComponent<Light>();
-        light.intensity = 0.2f;
-        start = false;
+    void Start() {
+
+        StartLighting();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (start)
+    public IEnumerator GameStart (){
+        while(pointLIght.intensity < 1f)
         {
-            timer += Time.deltaTime;
-                    if(timer > gap)
-                    {
-                        if ( light.range < maxRange)
-                        {
-                            light.range += 10f;
-                        }
-                        if( light.intensity < maxIntensity)
-                        {
-                            light.intensity += 0.01f;
-                        }
-                        timer = 0;
-
-                    }
+            pointLIght.intensity +=1 * Time.deltaTime * 0.2f; 
+            yield return 0;
         }
+        pointLIght.intensity = 1f;
         
-
-    }
-    public void StartLight()
+        }    
+    public void StartLighting()
     {
-        start = true;
+        StartCoroutine(GameStart());
     }
+    // Update is called once per frame
+
 }

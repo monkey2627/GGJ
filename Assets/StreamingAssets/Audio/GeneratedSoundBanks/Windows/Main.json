@@ -1,0 +1,622 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "3161908922",
+    "Type": "User",
+    "GUID": "{DBA25B59-2100-43A4-B1D1-ABCEB2AF0139}",
+    "Language": "SFX",
+    "Hash": "{09D9378B-B2F3-9422-A650-E9B6B11E3F82}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
+    "Media": [
+     {
+      "Id": "1725109",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_LoomWork_Gear_01.wav",
+      "CachePath": "SFX/Ambient_LoomWork_Gear_01_C4BEA434.wem"
+     },
+     {
+      "Id": "71231233",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_07.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_07_818F3B66.wem"
+     },
+     {
+      "Id": "118663403",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Object_Order_Appear_01.wav",
+      "CachePath": "SFX/Object_Order_Appear_01_818F3B66.wem"
+     },
+     {
+      "Id": "131515225",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI_Game_Award_01.wav",
+      "CachePath": "SFX/UI_Game_Award_01_818F3B66.wem"
+     },
+     {
+      "Id": "139513863",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_05.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_05_818F3B66.wem"
+     },
+     {
+      "Id": "141710736",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI_Game_Win_01.wav",
+      "CachePath": "SFX/UI_Game_Win_01_818F3B66.wem"
+     },
+     {
+      "Id": "180774633",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI_Game_Fail_01.wav",
+      "CachePath": "SFX/UI_Game_Fail_01_818F3B66.wem"
+     },
+     {
+      "Id": "213425621",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_06.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_06_818F3B66.wem"
+     },
+     {
+      "Id": "221294234",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Grab_01.wav",
+      "CachePath": "SFX/Player_Grab_01_818F3B66.wem"
+     },
+     {
+      "Id": "308571478",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Move_03.wav",
+      "CachePath": "SFX/Player_Move_03_818F3B66.wem"
+     },
+     {
+      "Id": "364255195",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_LoomWork_Flying_01.wav",
+      "CachePath": "SFX/Ambient_LoomWork_Flying_01_0C10528E.wem"
+     },
+     {
+      "Id": "370357429",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Ambience_01.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Ambience_01_77674B82.wem"
+     },
+     {
+      "Id": "393325668",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Object_Order_Finish_01.wav",
+      "CachePath": "SFX/Object_Order_Finish_01_818F3B66.wem"
+     },
+     {
+      "Id": "463857265",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_GrandmaWork_01.wav",
+      "CachePath": "SFX/Ambient_GrandmaWork_01_7D980A4E.wem"
+     },
+     {
+      "Id": "484607081",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Drop_01.wav",
+      "CachePath": "SFX/Player_Drop_01_818F3B66.wem"
+     },
+     {
+      "Id": "525799224",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Object_Order_Miss_01.wav",
+      "CachePath": "SFX/Object_Order_Miss_01_818F3B66.wem"
+     },
+     {
+      "Id": "620050953",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Move_04.wav",
+      "CachePath": "SFX/Player_Move_04_818F3B66.wem"
+     },
+     {
+      "Id": "635490974",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_03.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_03_818F3B66.wem"
+     },
+     {
+      "Id": "637497874",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Move_05.wav",
+      "CachePath": "SFX/Player_Move_05_818F3B66.wem"
+     },
+     {
+      "Id": "686526134",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI_Game_Begin_01.wav",
+      "CachePath": "SFX/UI_Game_Begin_01_818F3B66.wem"
+     },
+     {
+      "Id": "707589975",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Move_01.wav",
+      "CachePath": "SFX/Player_Move_01_818F3B66.wem"
+     },
+     {
+      "Id": "720499055",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_04.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_04_818F3B66.wem"
+     },
+     {
+      "Id": "835353441",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_01.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_01_818F3B66.wem"
+     },
+     {
+      "Id": "851191821",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "UI_Confirm_01.wav",
+      "CachePath": "SFX/UI_Confirm_01_818F3B66.wem"
+     },
+     {
+      "Id": "875001955",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Object_Loom_Change_01.wav",
+      "CachePath": "SFX/Object_Loom_Change_01_818F3B66.wem"
+     },
+     {
+      "Id": "896426213",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Object_Order_Move_01.wav",
+      "CachePath": "SFX/Object_Order_Move_01_818F3B66.wem"
+     },
+     {
+      "Id": "1004740522",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Object_Loom_Finish_01.wav",
+      "CachePath": "SFX/Object_Loom_Finish_01_818F3B66.wem"
+     },
+     {
+      "Id": "1008495583",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_HouseMoan_Wood_02.wav",
+      "CachePath": "SFX/Ambient_HouseMoan_Wood_02_818F3B66.wem"
+     },
+     {
+      "Id": "1048008292",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Player_Move_02.wav",
+      "CachePath": "SFX/Player_Move_02_818F3B66.wem"
+     },
+     {
+      "Id": "1071958468",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambient_MachineWork_01.wav",
+      "CachePath": "SFX/Ambient_MachineWork_01_8F41B513.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "934150494",
+      "Name": "Ambient_GrandmaWork_Play",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_GrandmaWork\\Ambient_GrandmaWork_Play",
+      "GUID": "{3C781E50-1247-4946-9ED3-056C809309EA}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "463857265"
+       }
+      ]
+     },
+     {
+      "Id": "1972146464",
+      "Name": "Ambient_GrandmaWork_Stop",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_GrandmaWork\\Ambient_GrandmaWork_Stop",
+      "GUID": "{13FCB0CB-5CB1-4905-8602-FB697ED1D555}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1759941420",
+      "Name": "Ambient_HouseMoan_Play",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_HouseMoan\\Ambient_HouseMoan_Play",
+      "GUID": "{FFB30B91-853A-47F9-9C70-7C0FEEEA8CD3}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "71231233"
+       },
+       {
+        "Id": "139513863"
+       },
+       {
+        "Id": "213425621"
+       },
+       {
+        "Id": "370357429"
+       },
+       {
+        "Id": "635490974"
+       },
+       {
+        "Id": "720499055"
+       },
+       {
+        "Id": "835353441"
+       },
+       {
+        "Id": "1008495583"
+       }
+      ]
+     },
+     {
+      "Id": "3729726006",
+      "Name": "Ambient_HouseMoan_Stop",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_HouseMoan\\Ambient_HouseMoan_Stop",
+      "GUID": "{A1E6AC24-F366-41A2-B819-2B47614842E7}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1515509559",
+      "Name": "Ambient_LoomWork_Play",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_LoomWork\\Ambient_LoomWork_Play",
+      "GUID": "{7FE280C5-8244-46E2-B1DE-8ABC6DFC5265}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1725109"
+       },
+       {
+        "Id": "364255195"
+       }
+      ]
+     },
+     {
+      "Id": "245528677",
+      "Name": "Ambient_LoomWork_Stop",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_LoomWork\\Ambient_LoomWork_Stop",
+      "GUID": "{04BF3529-6E74-4E4B-80B3-072C231223BD}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2741153787",
+      "Name": "Ambient_MachineWork_Play",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_MachineWork\\Ambient_MachineWork_Play",
+      "GUID": "{F5E3DB2F-4E98-4AD0-B512-6129BE495730}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1071958468"
+       }
+      ]
+     },
+     {
+      "Id": "1610616497",
+      "Name": "Ambient_MachineWork_Stop",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Ambient\\Ambient_MachineWork\\Ambient_MachineWork_Stop",
+      "GUID": "{3D7F9E43-180C-4812-ABFD-E7CE9F655CC5}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "15273518",
+      "Name": "Music_Explore",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\Music\\Music_Explore",
+      "GUID": "{981D46BA-2BA9-444F-B450-AA08D65176DB}",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3227181061",
+      "Name": "Music_Stop",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\Music\\Music_Stop",
+      "GUID": "{9F800CC9-2F27-44E2-909C-2E16ADA90CA9}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2456972663",
+      "Name": "Object_Loom_Change",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Object\\Object_Loom\\Object_Loom_Change",
+      "GUID": "{A4905E33-0A1F-4090-94C1-43107D9AB6C0}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.93362814",
+      "DurationMax": "0.93362814",
+      "MediaRefs": [
+       {
+        "Id": "875001955"
+       }
+      ]
+     },
+     {
+      "Id": "631574478",
+      "Name": "Object_Loom_Finish",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Object\\Object_Loom\\Object_Loom_Finish",
+      "GUID": "{ADB2F618-CE13-466C-96A6-823908A53278}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5165759",
+      "DurationMax": "1.5165759",
+      "MediaRefs": [
+       {
+        "Id": "1004740522"
+       }
+      ]
+     },
+     {
+      "Id": "3575323535",
+      "Name": "Object_Order_Appear",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Object\\Object_Order\\Object_Order_Appear",
+      "GUID": "{E94B3039-AA06-4760-AA59-6427D3B8B397}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.9926984",
+      "DurationMax": "1.9926984",
+      "MediaRefs": [
+       {
+        "Id": "118663403"
+       }
+      ]
+     },
+     {
+      "Id": "2774872329",
+      "Name": "Object_Order_Finish",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Object\\Object_Order\\Object_Order_Finish",
+      "GUID": "{2D698B31-9D21-465B-B82C-D53436A075A5}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.998458",
+      "DurationMax": "0.998458",
+      "MediaRefs": [
+       {
+        "Id": "393325668"
+       }
+      ]
+     },
+     {
+      "Id": "3259942628",
+      "Name": "Object_Order_Miss",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Object\\Object_Order\\Object_Order_Miss",
+      "GUID": "{D3839204-CB6A-42EC-AD2C-2BF98FDCF298}",
+      "DurationType": "OneShot",
+      "DurationMin": "4",
+      "DurationMax": "4",
+      "MediaRefs": [
+       {
+        "Id": "525799224"
+       }
+      ]
+     },
+     {
+      "Id": "2907906771",
+      "Name": "Object_Order_Move",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Object\\Object_Order\\Object_Order_Move",
+      "GUID": "{70A3C123-BC20-4926-9297-E41D0B0BF75E}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.9929478",
+      "DurationMax": "0.9929478",
+      "MediaRefs": [
+       {
+        "Id": "896426213"
+       }
+      ]
+     },
+     {
+      "Id": "1922690190",
+      "Name": "Player_Drop",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Player\\Player_Drop",
+      "GUID": "{46D336C7-8A8C-4FEE-9367-68FBFAB36DF6}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.028322",
+      "DurationMax": "1.028322",
+      "MediaRefs": [
+       {
+        "Id": "484607081"
+       }
+      ]
+     },
+     {
+      "Id": "816303795",
+      "Name": "Player_Grab",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Player\\Player_Grab",
+      "GUID": "{CB607481-B711-4490-88C4-BB9432CD8397}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1348526",
+      "DurationMax": "1.1348526",
+      "MediaRefs": [
+       {
+        "Id": "221294234"
+       }
+      ]
+     },
+     {
+      "Id": "2248092158",
+      "Name": "Player_Move",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Player\\Player_Move",
+      "GUID": "{1CAF2757-238F-480F-9333-CE900DDDA91E}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "308571478"
+       },
+       {
+        "Id": "620050953"
+       },
+       {
+        "Id": "637497874"
+       },
+       {
+        "Id": "707589975"
+       },
+       {
+        "Id": "1048008292"
+       }
+      ]
+     },
+     {
+      "Id": "3361170585",
+      "Name": "Player_Stop",
+      "ObjectPath": "\\Events\\Default Work Unit\\World\\Player\\Player_Stop",
+      "GUID": "{4622741F-3C08-436B-B1E5-CF87A97441BF}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "452547817",
+      "Name": "STOP_ALL",
+      "ObjectPath": "\\Events\\Default Work Unit\\STOP_ALL",
+      "GUID": "{67FA17D0-8D6C-4E27-9BD6-3D97DFA791F0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "216067002",
+      "Name": "UI_Confirm",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\UI\\UI_Confirm",
+      "GUID": "{53EA3260-46FA-4100-AAA1-EC992F9A0D83}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.45850202",
+      "DurationMax": "0.5452539",
+      "MediaRefs": [
+       {
+        "Id": "851191821"
+       }
+      ]
+     },
+     {
+      "Id": "1653993118",
+      "Name": "UI_Game_Award",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\UI\\UI_Game\\UI_Game_Award",
+      "GUID": "{230F88E3-F322-4B57-BA45-C1BA4C288441}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5",
+      "DurationMax": "1.5",
+      "MediaRefs": [
+       {
+        "Id": "131515225"
+       }
+      ]
+     },
+     {
+      "Id": "921872670",
+      "Name": "UI_Game_Begin",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\UI\\UI_Game\\UI_Game_Begin",
+      "GUID": "{3E7D6172-0CE0-464A-AEB0-D22DCC8C37C9}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.5339909",
+      "DurationMax": "3.5339909",
+      "MediaRefs": [
+       {
+        "Id": "686526134"
+       }
+      ]
+     },
+     {
+      "Id": "150810275",
+      "Name": "UI_Game_Fail",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\UI\\UI_Game\\UI_Game_Fail",
+      "GUID": "{A93513BC-270D-4452-BADE-930632BEB393}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.9811338",
+      "DurationMax": "1.9811338",
+      "MediaRefs": [
+       {
+        "Id": "180774633"
+       }
+      ]
+     },
+     {
+      "Id": "380860655",
+      "Name": "UI_Game_Win",
+      "ObjectPath": "\\Events\\Default Work Unit\\Non-World\\UI\\UI_Game\\UI_Game_Win",
+      "GUID": "{CD7106AD-2C59-4CB2-A968-590DE9123D88}",
+      "DurationType": "OneShot",
+      "DurationMin": "3",
+      "DurationMax": "3",
+      "MediaRefs": [
+       {
+        "Id": "141710736"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{32302055-DAE7-C811-8F9B-34EA87C7D5E6}"
+ }
+}
