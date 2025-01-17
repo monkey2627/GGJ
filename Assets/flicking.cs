@@ -8,16 +8,21 @@ public class flicking : MonoBehaviour
     bool re = false;
     float clock = 0;
     float intensity = 0.2f;
+    public bool  gameStart = false;
+    //.改，要限定最大最小值
     // Start is called before the first frame update
     void Start()
     {
+        gameStart = false;
         light = gameObject.GetComponent<Light>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        clock += Time.deltaTime;
+        if (gameStart)
+        {
+ clock += Time.deltaTime;
         if(clock > 0.4)
         {
             clock = 0;
@@ -39,5 +44,7 @@ if (re)
         
        
         
+        }
+       
     }
 }

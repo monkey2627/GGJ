@@ -19,4 +19,13 @@ public class UIController : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    public void OpenSettings()
+    {
+        gameObject.transform.Find("SettingsPanel").gameObject.SetActive(true);
+    }
+    public void CloseSettings()
+    {
+        gameObject.transform.Find("SettingsPanel").gameObject.SetActive(false);
+    }
+
 }

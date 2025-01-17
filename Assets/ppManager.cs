@@ -10,8 +10,7 @@ public class ppManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = new ppManager();
-        GAMEStart();
+        instance = this;
     }
 
     // Update is called once per frame
@@ -23,9 +22,6 @@ public class ppManager : MonoBehaviour
 
     public IEnumerator gamestart(float speed)
     {
-        Debug.Log(2);
-        //float currentSaturation = volume.profile.GetSetting<ColorGrading>().saturation.value;
-       // LightingController.instance.StartLighting();
         while (gameObject.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>().saturation.value < 0 || gameObject.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>().hueShift.value > 0 || gameObject.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>().contrast.value > 0)
         {
             if(gameObject.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>().saturation.value < 0)

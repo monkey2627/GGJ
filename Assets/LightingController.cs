@@ -14,13 +14,12 @@ public class LightingController : MonoBehaviour
     private bool start;
     private void Awake()
     {
-        instance = new LightingController();
-        Debug.Log("1");
+        instance = this;
+    
     }
     // Start is called before the first frame update
     void Start() {
 
-        StartLighting();
     }
 
     public IEnumerator GameStart (){
