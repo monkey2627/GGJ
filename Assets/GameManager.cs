@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject moneyAndSprite;
     public GameObject materialsPanel;
     public GameObject postpro;
+    public GameObject windowSpotLight;
     float allGameTime = 480;
     float alreadyGameTime =0;
     //随机数
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         moneyAndSprite.SetActive(true);
         materialsPanel.SetActive(true);
         //场景灯光
+        windowSpotLight.SetActive(false);
         ppManager.instance.GAMEStart();//关后处理
         LightingController.instance.StartLighting();//游戏中场景灯光变亮        
         GameObject.Find("SpotLight").GetComponent<flicking>().gameStart = true;//开始闪烁
