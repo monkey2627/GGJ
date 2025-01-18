@@ -43,8 +43,10 @@ public class Object{
     public float sellprice;//卖出的价钱
     //每个物品的合成配料,最多是三个不一样的
     public Ingredient[] ingredients = new Ingredient[3];
-    //这个物品在货架上有多少
+    //这个物品生产出来有多少
     public int number = 0;
+    //在货架上有多少
+    public int inShelves = 0;
     //这个物体所对应的图标（放在canvas）上
     public Sprite sprite;
 }
@@ -64,4 +66,6 @@ public class Order
     public float complete;
     //为订单创建一个进度条
     public Slider slider;
+    //
+    public Slider compleSlider;
 }

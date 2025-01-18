@@ -34,6 +34,8 @@ public class LightingController : MonoBehaviour
     public void StartLighting()
     {
         StartCoroutine(GameStart());
+        //¿ªÊ¼ÉÁ
+        flicking.instance.gameStart = true;
     }
     // Update is called once per frame
 

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
+
 public class OrderManager : MonoBehaviour
 {
     //
@@ -13,6 +15,7 @@ public class OrderManager : MonoBehaviour
     public Sprite[] allObjectsSprite = new Sprite[100];
     //每个订单和一个实体物体map
     Dictionary<Order, GameObject> orderDic;
+    public Dictionary<GameObject, Order> objDic;
     public int MAX_ = 3;
     //存现在还有的订单,从小到大为从右到左
     List<Order> allOrders;//
@@ -34,11 +37,108 @@ public class OrderManager : MonoBehaviour
 
         instance = this;
         orderDic  = new Dictionary<Order, GameObject>();
+        objDic = new Dictionary<GameObject, Order>();
         objects = new Object[110];
         allOrders = new List<Order>();
+        looms = new List<Object>();
         gameStart = false;
         GetCombineTabel();
         initHardLevel();
+    }
+    public List<Object> looms;
+    public GameObject[] loomIcon;
+    //加尔u工作
+
+    /*float width = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
+float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
+    //加入织布机的panel
+    public void AddIntoLoom(int number)//传入的是对应序号
+    {
+        //将图片替换成对应sprite
+        loomIcon[looms.Count].GetComponent<Image>().sprite = objects[number].sprite;
+        loomIcon[looms.Count].GetComponent<Image>().color  =  new Color(loomIcon[looms.Count].GetComponent<Image>().color.r, loomIcon[looms.Count].GetComponent<Image>().color .g, loomIcon[looms.Count].GetComponent<Image>().color.b,255);
+        looms.Add(objects[number]);
+        if(looms.Count == 3)//满三个了，开始织布
+        {
+            int[] a = new int[5];
+            for (int i = 0; i < 5; i++)
+                a[i] = 0;
+            for (int i = 0; i < 3; i++)
+                a[(int)looms[i].name] += 1;
+            if (a[1] == 3)
+            {
+                //silk 5
+                objects[5].number += 1;
+                looms.Clear();
+                for (int i = 0; i < 3; i++)
+                    loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+            }
+            else if (a[2] == 3)
+            {
+                objects[6].number += 1;
+                looms.Clear();
+                for (int i = 0; i < 3; i++)
+                    loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+                //棉线6
+            }
+            else if (a[3] == 3)
+            {
+                //亚麻 7
+                objects[7].number += 1;
+                looms.Clear();
+                for (int i = 0; i < 3; i++)
+                    loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+            }
+            else if(a[4] == 2 && a[2] ==1)
+            {
+                //涤纶 8
+                objects[8].number += 1;
+                looms.Clear();
+                for (int i = 0; i < 3; i++)
+                    loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+            }
+
+            RefreashMaterialPanel();
+        }
+    }
+   
+    public TMP_Text[] numbers = new TMP_Text[19];
+    //刷新面板上材料个数
+    void RefreashMaterialPanel()
+    {
+        for(int i = 5; i < 19; i++)
+        {
+            numbers[i].text = ((int)objects[i].number).ToString();
+            /**/
+        }
+    }
+    void RefreshBoardSprite(int i)
+    {
+        
+                // 不同情况改变不同贴图
+                if((int)objects[i].inShelves >= 3)
+                {
+
+                }else if((int)objects[i].inShelves == 2)
+                {
+
+                }else if((int)objects[i].inShelves == 1)
+                {
+
+                }else if((int)objects[i].inShelves == 0)
+                {
+
+                }
+
+        CheckProcess();
+    }
+
+    //放到货架上后调用的
+    void PortObject2Guizi(int i)//输入的是标号
+    {
+        objects[i].inShelves += 1;
+        //改贴图
+        RefreshBoardSprite(i);
     }
     void initHardLevel()
     {
@@ -67,6 +167,28 @@ public class OrderManager : MonoBehaviour
             UpdateRemainTime();
         }
 
+    }
+    public void FinishOrder(GameObject order)
+    {
+        Order o = objDic[order];
+        
+        //人物金钱改变
+        player.instance.FinishOrder(o);
+        //
+        foreach (var obj in o.objects)
+        {
+            //物品数减少
+            objects[(int)obj.name].number -= 1;
+            objects[(int)obj.name].inShelves -= 1;
+            //刷完成面板和柜子展示
+            RefreshBoardSprite((int)obj.name);
+        }
+
+        //刷新材料面板
+        RefreashMaterialPanel();
+        objDic.Remove(order);
+        orderDic.Remove(o);
+        Destroy(order);
     }
     void Create()
     {
@@ -230,7 +352,7 @@ public class OrderManager : MonoBehaviour
 
         }
     }
-    void CheckProcess()//检查并更新每个订单的进度
+    void CheckProcess()//检查并更新每个订单的进度,每次产生出新东西才调用，不然太麻烦了
     {
         for(int j = 0;j < allOrders.Count;j++)
   
@@ -239,7 +361,7 @@ public class OrderManager : MonoBehaviour
             int[] a = new int[100];
             for(int i = 0; i < 3; i++)
             {
-                a[(int)allOrders[j].objects[i].name] = objects[(int)allOrders[j].objects[i].name].number;
+                a[(int)allOrders[j].objects[i].name] = objects[(int)allOrders[j].objects[i].name].inShelves;
             }
             //得到三个物品所对应的个数
             for (int i = 0; i < 3; i++)
@@ -252,6 +374,11 @@ public class OrderManager : MonoBehaviour
                 
             }
             allOrders[j].complete = fit*1.0f / 3;
+            allOrders[j].compleSlider.value = fit * 1.0f / 3;
+            if(fit == 3)
+            {
+                //这个订单可以被完成,改变UI
+            }
         }
     }
     void UpdateRemainTime()
@@ -279,12 +406,15 @@ public class OrderManager : MonoBehaviour
         gameObject =  GameObject.Instantiate(gameObject);
         gameObject.transform.parent = GameObject.Find("OrderManager").transform;
         //创建新订单
-        Order order = new Order() { objects = objects,allTime=time,remainTime=time,money=money,complete=0,slider = gameObject.transform.GetChild(0).GetChild(0).GetComponent<Slider>() };
+        Order order = new Order() { objects = objects,allTime=time,remainTime=time,money=money,complete=0};
+        order.slider = gameObject.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
+        order.compleSlider = gameObject.transform.GetChild(0).GetChild(4).GetComponent<Slider>();
         //关联
         orderDic.Add(order, gameObject);
-        
+        objDic.Add(gameObject, order);
         //初始化
         order.slider.value = 1;
+        order.compleSlider.value = 0;
         gameObject.transform.position = startPos;
         //显示图标
         gameObject.transform.gameObject.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = objects[0].sprite;
@@ -299,7 +429,6 @@ public class OrderManager : MonoBehaviour
             orderDic[o].transform.DOMoveX(orderDic[o].transform.position.x+gap.x, 2f, false);
         }
     }
-
     //初始化objects
     public void GetCombineTabel()
     {
