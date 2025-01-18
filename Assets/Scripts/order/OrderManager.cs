@@ -52,13 +52,13 @@ public class OrderManager : MonoBehaviour
     /*float width = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
 float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     //加入织布机的panel
-    public void AddIntoLoom(int number)//传入的是对应序号
+    public void AddIntoLoom(int number)//传入的是对应序号,只有制作了这边才会减少数量
     {
         //将图片替换成对应sprite
         loomIcon[looms.Count].GetComponent<Image>().sprite = objects[number].sprite;
         loomIcon[looms.Count].GetComponent<Image>().color  =  new Color(loomIcon[looms.Count].GetComponent<Image>().color.r, loomIcon[looms.Count].GetComponent<Image>().color .g, loomIcon[looms.Count].GetComponent<Image>().color.b,255);
         looms.Add(objects[number]);
-        if(looms.Count == 3)//满三个了，开始织布
+        if(looms.Count == 3)//满三个了，开始织布,增加材料以及减少材料
         {
             int[] a = new int[5];
             for (int i = 0; i < 5; i++)
@@ -72,6 +72,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 looms.Clear();
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)looms[i].name].number -= 1;
             }
             else if (a[2] == 3)
             {
@@ -79,7 +81,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 looms.Clear();
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
-                //棉线6
+                for (int i = 0; i < 3; i++)
+                    objects[(int)looms[i].name].number -= 1;
             }
             else if (a[3] == 3)
             {
@@ -88,6 +91,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 looms.Clear();
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)looms[i].name].number -= 1;
             }
             else if(a[4] == 2 && a[2] ==1)
             {
@@ -96,12 +101,122 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 looms.Clear();
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)looms[i].name].number -= 1;
             }
 
             RefreashMaterialPanel();
         }
     }
-   
+
+    public List<Object> workShops;
+    public GameObject[] workShopIcon;
+    public void AddIntoWorkShop(int number)
+    {
+        //将图片替换成对应sprite
+        workShopIcon[workShops.Count].GetComponent<Image>().sprite = objects[number].sprite;
+        workShopIcon[workShops.Count].GetComponent<Image>().color = new Color(workShopIcon[workShops.Count].GetComponent<Image>().color.r, workShopIcon[workShops.Count].GetComponent<Image>().color.g, workShopIcon[workShops.Count].GetComponent<Image>().color.b, 255);
+        workShops.Add(objects[number]);
+        if (workShops.Count == 3)//满三个了，开始造东西
+        {
+            int[] a = new int[5];
+            for (int i = 0; i < 5; i++)
+                a[i] = 0;
+            for (int i = 0; i < 3; i++)
+                a[(int)workShops[i].name] += 1;
+            if (a[2] == 1 && a[6] == 2)
+            {
+                //silk 5
+                objects[11].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[8] == 1 && a[6] == 1 && a[2] == 1)
+            {
+                objects[12].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[6] == 1 && a[7] == 1 && a[2] == 1)
+            {
+                //亚麻 7
+                objects[13].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[0] == 2 && a[6] == 1)
+            {
+                //涤纶 8
+                objects[14].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[14] == 1 && a[7] == 1 && a[2] == 1)
+            {
+                //涤纶 8
+                objects[15].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[14] == 1 && a[8] == 1 && a[9] ==1)
+            {
+                //涤纶 8
+                objects[16].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[5] == 1 && a[0] == 1 && a[9] == 1)
+            {
+                //涤纶 8
+                objects[17].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[10] == 2 && a[1] == 1)
+            {
+                //涤纶 8
+                objects[18].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            else if (a[9] == 1 && a[5] == 1 && a[18] == 1)
+            {
+                //涤纶 8
+                objects[19].number += 1;
+                workShops.Clear();
+                for (int i = 0; i < 3; i++)
+                    workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+                for (int i = 0; i < 3; i++)
+                    objects[(int)workShops[i].name].number -= 1;
+            }
+            RefreashMaterialPanel();
+        }
+
+    }
     public TMP_Text[] numbers = new TMP_Text[19];
     //刷新面板上材料个数
     void RefreashMaterialPanel()
@@ -112,7 +227,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             /**/
         }
     }
-    void RefreshBoardSprite(int i)
+    public void RefreshBoardSprite(int i)
     {
         
                 // 不同情况改变不同贴图
@@ -134,7 +249,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     }
 
     //放到货架上后调用的
-    void PortObject2Guizi(int i)//输入的是标号
+    public void PortObject2Guizi(int i)//输入的是标号
     {
         objects[i].inShelves += 1;
         //改贴图

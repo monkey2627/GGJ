@@ -10,6 +10,7 @@ public class player : MonoBehaviour
     public List<GameObject> sprites;//现在拥有的小精灵
     public TMP_Text moneyText;
     public TMP_Text spriteNumberText;
+    public GameObject choosedObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,6 @@ public class player : MonoBehaviour
         if (Physics.Raycast(ray, out hit)){
                 // 射线与物体相交，处理鼠标点击事件
                 GameObject clickedObject = hit.collider.gameObject;
-        
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     //出售
@@ -51,8 +51,17 @@ public class player : MonoBehaviour
                     //如果点击的是已经可以完成的订单,就完成订单
                     if(clickedObject.name == "order")
                     {
+                        choosedObj = null;
                         if(OrderManager.instance.objDic[clickedObject].complete == 1)
                             OrderManager.instance.FinishOrder(clickedObject);
+                    }else if (clickedObject.layer == 14)//点击了object,用layer来
+                    {
+                        choosedObj = clickedObject;
+                        Debug.Log(clickedObject.name);
+                    }   
+                    else
+                    {
+                        choosedObj = null;
                     }
             
                 }
