@@ -253,29 +253,30 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         // 不同情况改变不同贴图
          if((int)objects[i].inShelves >= 3)
         {
-            showForCloset[i].SetActive(true);
-            showForCloset[i].transform.GetChild(0).gameObject.SetActive(true);
-            showForCloset[i].transform.GetChild(1).gameObject.SetActive(true);
+            showForCloset[i-5].SetActive(true);
+            showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(true);
+            showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(true);
           
             
         }
         else if((int)objects[i].inShelves == 2)
                 {  
-            showForCloset[i].SetActive(true);
-            showForCloset[i].transform.GetChild(0).gameObject.SetActive(true);
-            showForCloset[i].transform.GetChild(1).gameObject.SetActive(false);
+            showForCloset[i-5].SetActive(true);
+            showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(true);
+            showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(false);
           
         }
         else if((int)objects[i].inShelves == 1)
                 {
-            showForCloset[i].SetActive(true);
-            showForCloset[i].transform.GetChild(0).gameObject.SetActive(false);
-            showForCloset[i].transform.GetChild(1).gameObject.SetActive(false);
+            Debug.Log("lalla");
+            showForCloset[i-5].SetActive(true);
+            showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(false);
+            showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(false);
             
         }
         else if((int)objects[i].inShelves == 0)
                 {
-                showForCloset[i].SetActive(false);
+                showForCloset[i-5].SetActive(false);
                     
                 }
 
@@ -607,6 +608,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             }
         }
     }
+    public GameObject[] bubbles;
     void UpdateRemainTime()
     {
         for(int i = 0; i < allOrders.Count; i++)
@@ -617,6 +619,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             {
                     //可以考虑做一个消失的效果？？
                 Destroy(orderDic[allOrders[i]]);
+                bubbles[0].GetComponent<bubble>().Generate(30);
                 //从allOrders移除
                 allOrders.RemoveAt(i);
             }

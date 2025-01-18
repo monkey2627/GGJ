@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class player : MonoBehaviour
 {
@@ -58,7 +59,7 @@ public class player : MonoBehaviour
                     moneyText.text = ((int)money).ToString();
 
                 }
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
                 Debug.Log(clickedObject.name);
                     //如果点击的是已经可以完成的订单,就完成订单
@@ -88,14 +89,17 @@ public class player : MonoBehaviour
                         }
                         if(clickedObject.transform.parent != null && clickedObject.transform.parent.name == "Loom")
                         {
-                            clickThingsInLoom = true;
+                        Debug.Log("fromLoom");
+                        clickThingsInLoom = true;
                             objInLoom= clickedObject;
                         }
                     }
                 else if (clickedObject.transform.parent.name== "rightclosetfar")
                 {
+                    Debug.Log("rightclosetfar");
                     if (clickThingsInLoom)
                     {
+                        Debug.Log("loom");
                         StartPortFromLoom();
                     }else if (clickThingsInWorkShop)
                     {
@@ -161,7 +165,7 @@ public class player : MonoBehaviour
         npc = NpcManager.Instance.FindHaveTimeNpc();
         if (npc != null)//有空闲的Npc
         {
-            npc.SetPos(workShop.position, rightFar.transform.position, 2, mark);
+            npc.SetPos(loom.position, rightFar.transform.position, 2, mark);
         }
     }
     public void FinishOrder(Order order)
