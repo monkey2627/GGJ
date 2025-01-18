@@ -28,10 +28,12 @@ public class OrderManager : MonoBehaviour
     public int[] middle = new int[5];
     public int[] hard = new int[5];
     //
-    Vector3 startPos = new Vector3(-20.67f, 12.0795f, -10.3707f);
-    Vector3 gap = new Vector3(3.3f, 0, 0);
+    Vector3 startPos = new Vector3(-23.3f, 14.6f, -6.9f);
+    Vector3 gap = new Vector3(4.75f, 0, 0);
     //
     public bool gameStart;
+    public GameObject loom;
+    public GameObject workShop;
     private void Awake()
     {
 
@@ -42,13 +44,14 @@ public class OrderManager : MonoBehaviour
         allOrders = new List<Order>();
         looms = new List<Object>();
         gameStart = false;
+        workShops = new List<Object>();
         GetCombineTabel();
         initHardLevel();
     }
     public List<Object> looms;
     public GameObject[] loomIcon;
     //加尔u工作
-
+    
     /*float width = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
 float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     //加入织布机的panel
@@ -68,43 +71,48 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             if (a[1] == 3)
             {
                 //silk 5
-                objects[5].number += 1;
-                looms.Clear();
+                isSewingNumber = 5;
+                isSewing = true;
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
-                    objects[(int)looms[i].name].number -= 1;
+                {
+                  
+                    Debug.Log((int)looms[i].name);
+                    objects[(int)looms[i].name].number -= 1; } looms.Clear();
             }
             else if (a[2] == 3)
             {
-                objects[6].number += 1;
-                looms.Clear();
+                isSewingNumber = 6;
+                isSewing = true;
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)looms[i].name].number -= 1;
+                looms.Clear();
             }
             else if (a[3] == 3)
             {
                 //亚麻 7
-                objects[7].number += 1;
-                looms.Clear();
+                isSewingNumber = 7;
+                isSewing = true;
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
-                    objects[(int)looms[i].name].number -= 1;
+                    objects[(int)looms[i].name].number -= 1;looms.Clear();
             }
             else if(a[4] == 2 && a[2] ==1)
             {
                 //涤纶 8
-                objects[8].number += 1;
-                looms.Clear();
+                isSewingNumber = 8;
+                isSewing = true;
                 for (int i = 0; i < 3; i++)
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)looms[i].name].number -= 1;
+                looms.Clear();
             }
-
+            
             RefreashMaterialPanel();
         }
     }
@@ -113,7 +121,6 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     public GameObject[] workShopIcon;
     public void AddIntoWorkShop(int number)
     {
-        //将图片替换成对应sprite
         workShopIcon[workShops.Count].GetComponent<Image>().sprite = objects[number].sprite;
         workShopIcon[workShops.Count].GetComponent<Image>().color = new Color(workShopIcon[workShops.Count].GetComponent<Image>().color.r, workShopIcon[workShops.Count].GetComponent<Image>().color.g, workShopIcon[workShops.Count].GetComponent<Image>().color.b, 255);
         workShops.Add(objects[number]);
@@ -127,96 +134,109 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             if (a[2] == 1 && a[6] == 2)
             {
                 //silk 5
-                objects[11].number += 1;
-                workShops.Clear();
+                isMakingNumber = 11;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
-                    objects[(int)workShops[i].name].number -= 1;
+                    objects[(int)workShops[i].name].number -= 1; 
+                workShops.Clear();
             }
             else if (a[8] == 1 && a[6] == 1 && a[2] == 1)
             {
-                objects[12].number += 1;
-                workShops.Clear();
+                isMakingNumber = 12;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
-                    objects[(int)workShops[i].name].number -= 1;
+                    objects[(int)workShops[i].name].number -= 1; 
+                workShops.Clear();
             }
             else if (a[6] == 1 && a[7] == 1 && a[2] == 1)
             {
                 //亚麻 7
-                objects[13].number += 1;
-                workShops.Clear();
+                isMakingNumber = 13;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
-            }
+                workShops.Clear();
+            } 
             else if (a[0] == 2 && a[6] == 1)
             {
                 //涤纶 8
-                objects[14].number += 1;
-                workShops.Clear();
+                isMakingNumber = 14;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
+                workShops.Clear();
             }
             else if (a[14] == 1 && a[7] == 1 && a[2] == 1)
             {
                 //涤纶 8
-                objects[15].number += 1;
-                workShops.Clear();
+                isMakingNumber = 15;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
+                workShops.Clear();
             }
             else if (a[14] == 1 && a[8] == 1 && a[9] ==1)
             {
                 //涤纶 8
-                objects[16].number += 1;
-                workShops.Clear();
+                isMakingNumber = 16;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
+                workShops.Clear();
             }
             else if (a[5] == 1 && a[0] == 1 && a[9] == 1)
             {
                 //涤纶 8
-                objects[17].number += 1;
-                workShops.Clear();
+                isMakingNumber = 17;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
+                workShops.Clear();
             }
             else if (a[10] == 2 && a[1] == 1)
             {
                 //涤纶 8
-                objects[18].number += 1;
-                workShops.Clear();
+                isMakingNumber = 18;
+                isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
+                workShops.Clear();
             }
             else if (a[9] == 1 && a[5] == 1 && a[18] == 1)
             {
                 //涤纶 8
-                objects[19].number += 1;
-                workShops.Clear();
+               // objects[19].number += 1;
+                isMakingNumber = 19;
+                
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
+                workShops.Clear();
             }
             RefreashMaterialPanel();
+            
         }
 
     }
+    public int isMakingNumber = 0;
+    public bool isMaking = false;
     public TMP_Text[] numbers = new TMP_Text[19];
     //刷新面板上材料个数
     void RefreashMaterialPanel()
@@ -227,22 +247,36 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             /**/
         }
     }
+    public GameObject[] showForCloset;
     public void RefreshBoardSprite(int i)
     {
-        
-                // 不同情况改变不同贴图
-                if((int)objects[i].inShelves >= 3)
+        // 不同情况改变不同贴图
+         if((int)objects[i].inShelves >= 3)
+        {
+            showForCloset[i].SetActive(true);
+            showForCloset[i].transform.GetChild(0).gameObject.SetActive(true);
+            showForCloset[i].transform.GetChild(1).gameObject.SetActive(true);
+          
+            
+        }
+        else if((int)objects[i].inShelves == 2)
+                {  
+            showForCloset[i].SetActive(true);
+            showForCloset[i].transform.GetChild(0).gameObject.SetActive(true);
+            showForCloset[i].transform.GetChild(1).gameObject.SetActive(false);
+          
+        }
+        else if((int)objects[i].inShelves == 1)
                 {
-
-                }else if((int)objects[i].inShelves == 2)
+            showForCloset[i].SetActive(true);
+            showForCloset[i].transform.GetChild(0).gameObject.SetActive(false);
+            showForCloset[i].transform.GetChild(1).gameObject.SetActive(false);
+            
+        }
+        else if((int)objects[i].inShelves == 0)
                 {
-
-                }else if((int)objects[i].inShelves == 1)
-                {
-
-                }else if((int)objects[i].inShelves == 0)
-                {
-
+                showForCloset[i].SetActive(false);
+                    
                 }
 
         CheckProcess();
@@ -269,6 +303,10 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     }
     float gameTime = 0;
     float singleTime = 0;
+    float makingTime = 0;
+    bool isSewing = false;
+    float sewingTime = 0;
+    int isSewingNumber = 0;
     private void Update()
     {
       
@@ -281,7 +319,80 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             //更新订单的剩余时间
             UpdateRemainTime();
         }
+        if (isMaking)
+        {
+            makingTime += Time.deltaTime;
+            if(makingTime > 4f)
+            {
+                Debug.Log("制作完成");
+                isMaking = false;
+                makingTime = 0;
+                objects[isMakingNumber].number += 1;
+                //实例化一个放在桌子上
+                GameObject sprite = Resources.Load(isMakingNumber.ToString()) as GameObject;
+                RefreashMaterialPanel();
+                sprite.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+                sprite.layer = 14;
+                sprite.transform.parent = workShop.transform;
+                //位置     
+            }
+        }
+        if (isSewing)
+        {
+            sewingTime += Time.deltaTime;
+            if (sewingTime > 2f)
+            {
+                Debug.Log("织布完成:"+isSewingNumber);
+                isSewing = false;
+                sewingTime = 0;
+                objects[isSewingNumber].number += 1;
+                objects[isSewingNumber].inLoom += 1;
+                RefreashMaterialPanel();
+                RefreashLoomPanel();
+                //实例化一个放在桌子上
+                GameObject sprite = Resources.Load("prefabs/" + isSewingNumber.ToString()) as GameObject;
+                sprite =  Instantiate(sprite);
+                sprite.transform.parent = loom.transform;
+                sprite.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                sprite.layer = 14;
+                //位置
+            }
+        }
 
+    }
+    public void RefreashLoomPanel()
+    {
+        for(int i = 5; i <= 8; i++)
+        {
+            if(objects[i].inLoom == 0)
+            {
+                Loom.Instance.forShow[i-5].SetActive(false);
+            }
+            else
+            {
+                Loom.Instance.forShow[i - 5].SetActive(true);
+            }
+        }
+    }
+    public void ClearWorkShop()
+    {
+        for (int i = 0; i < 3; i++)
+            workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+        workShops.Clear();
+    }
+    public void RefreshWorkShopSprite(int number)
+    {
+        for (int i = 9; i <= 19; i++)
+        {
+            if (objects[i].inWorkShop == 0)
+            {
+               WorkShop.instance.forShow[i - 9].SetActive(false);
+            }
+            else
+            {
+                WorkShop.instance.forShow[i - 9].SetActive(true);
+            }
+        }
     }
     public void FinishOrder(GameObject order)
     {
@@ -540,7 +651,6 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         //集体右移
         foreach (Order o in allOrders)
         {
-            Debug.Log("move");
             orderDic[o].transform.DOMoveX(orderDic[o].transform.position.x+gap.x, 2f, false);
         }
     }

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         windowSpotLight.SetActive(false);
         ppManager.instance.GAMEStart();//关后处理
         LightingController.instance.StartLighting();//游戏中场景灯光变亮        
-        GameObject.Find("SpotLight").GetComponent<flicking>().gameStart = true;//开始闪烁
+        //GameObject.Find("SpotLight").GetComponent<flicking>().gameStart = true;//开始闪烁
        //游戏刚开始即创建一个新订单
         Object[] objs = new Object[3];
         float money = 0;

@@ -47,6 +47,10 @@ public class Object{
     public int number = 0;
     //在货架上有多少
     public int inShelves = 0;
+    //在工作站有多少
+    public int inWorkShop = 0;
+    //在织布机上有多少
+    public int inLoom = 0;
     //这个物体所对应的图标（放在canvas）上
     public Sprite sprite;
 }
