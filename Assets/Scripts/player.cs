@@ -81,25 +81,29 @@ public class player : MonoBehaviour
                         }
 
                         choosedObj = clickedObject;
+                        //如果点击的物品在workShop或者Loom上
                         if(clickedObject.transform.parent!=null && clickedObject.transform.parent.name == "WorkShop")
                         {
-                        Debug.Log("yes");
+                            Debug.Log("fromWorkShop");
                             clickThingsInWorkShop = true;
                             objInWorkShop = clickedObject;
                         }
                         if(clickedObject.transform.parent != null && clickedObject.transform.parent.name == "Loom")
                         {
-                        Debug.Log("fromLoom");
-                        clickThingsInLoom = true;
+                            Debug.Log("fromLoom");
+                            clickThingsInLoom = true;
                             objInLoom= clickedObject;
-                        }
+                    }else
+                    {
+                        clickThingsInWorkShop = false;
+                        clickThingsInLoom = false;
+                    }
                     }
                 else if (clickedObject.transform.parent.name== "rightclosetfar")
                 {
                     Debug.Log("rightclosetfar");
                     if (clickThingsInLoom)
                     {
-                        Debug.Log("loom");
                         StartPortFromLoom();
                     }else if (clickThingsInWorkShop)
                     {

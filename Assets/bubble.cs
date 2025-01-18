@@ -42,7 +42,7 @@ public class bubble : MonoBehaviour
 
                 GameObject image = Resources.Load("prefabs/b" + ra.Next(1, 3).ToString()) as GameObject;
                 image = Instantiate(image);
-                image.transform.parent = gameObject.transform;
+                image.transform.SetParent(gameObject.transform);
                 generateTime = 0;
                 max_ = (float)ra.NextDouble() * 5;
                 float size = getSize();

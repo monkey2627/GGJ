@@ -44,6 +44,7 @@ public class Npc : MonoBehaviour
                 {
                     //先织布机再货架
                     OrderManager.instance.objects[mark].inLoom -= 1;
+                    Debug.Log("inLoom: " + OrderManager.instance.objects[mark].inLoom);
                     OrderManager.instance.RefreashLoomPanel();
                 }else if (mode == 3)
                 {

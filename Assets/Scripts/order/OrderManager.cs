@@ -77,8 +77,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                 {
-                  
-                    Debug.Log((int)looms[i].name);
+                 
                     objects[(int)looms[i].name].number -= 1; } looms.Clear();
             }
             else if (a[2] == 3)
