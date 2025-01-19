@@ -429,7 +429,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         if (singleTime > 14)
         {            
             singleTime = 0;
-            if(allOrders.Count >= 5)
+            if(allOrders.Count >= 4)
             {
                 //最多五个订单
                 return;
@@ -617,11 +617,11 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             if(fit == 3)
             {
                 //这个订单可以被完成,改变UI
-                orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color = new Color(orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.r, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.g, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.b, 255);
+                orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color = new Color(orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color.r, orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color.g, orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color.b, 255);
             }
             else
             {
-                orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color = new Color(orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.r, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.g, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.b, 0);
+                orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color = new Color(orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color.r, orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color.g, orderDic[allOrders[j]].transform.GetChild(0).GetChild(0).GetComponent<Image>().color.b, 0);
             }
         }
     }
