@@ -37,6 +37,8 @@ public class OrderManager : MonoBehaviour
     public bool gameStart;
     public GameObject loom;
     public GameObject workShop;
+    //public
+
     private void Awake()
     {
 
@@ -285,6 +287,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     public GameObject[] showForCloset;
     public void RefreshBoardSprite(int i)
     {
+        if(i >= 5)
+        {
         // 不同情况改变不同贴图
          if((int)objects[i].inShelves >= 3)
         {
@@ -303,7 +307,6 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         }
         else if((int)objects[i].inShelves == 1)
                 {
-            Debug.Log("lalla");
             showForCloset[i-5].SetActive(true);
             showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(false);
             showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(false);
@@ -316,6 +319,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 }
 
         CheckProcess();
+        }
     }
 
     //放到货架上后调用的
@@ -408,11 +412,21 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             }
         }
     }
+    //清空，东西要放回去，柜子上东西增加
     public void ClearWorkShop()
-    {
+    {//,需要改
         for (int i = 0; i < 3; i++)
-            workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+        { workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
+            if (workShops.Count > i)//当前有
+            {
+                //在柜子上的数量+1；
+                objects[(int)workShops[i].name].inShelves += 1;
+                RefreshBoardSprite((int)workShops[i].name);
+            }
+            
+        }
         workShops.Clear();
+       
     }
     public void ClearLoom()
     {
@@ -458,7 +472,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     }
     void Create()
     {
-        if (singleTime > 14)
+        if (singleTime > 40)
         {            
             singleTime = 0;
             if(allOrders.Count >= 4)
@@ -468,7 +482,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             }
             Object[] objs = new Object[3];
             float money = 0;
-            if (gameTime <= 80)
+            if (gameTime <= 160)
             {
                 //1:0:0
                 objs[0] = objects[simple[ra.Next(0, 3)]];
@@ -476,7 +490,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 objs[1] = objects[simple[ra.Next(0, 3)]];
                 objs[2] = objects[simple[ra.Next(0, 3)]]; 
             }
-            else if (gameTime >= 80 && gameTime <= 160)
+            else if (gameTime >= 160 && gameTime <= 320)
             {
                 //18:12
                 int[] t = new int[30];
@@ -498,7 +512,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 objs[1] = objects[t[ra.Next(0, 30)]];
                 objs[2] = objects[t[ra.Next(0, 30)]];
             }
-            else if (gameTime >= 160 && gameTime <= 240)
+            else if (gameTime >= 320 && gameTime <= 480)
             {//12:15:3
                 int[] t = new int[30];
                 for (int i = 0; i < 4; i++)
@@ -526,7 +540,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 objs[1] = objects[t[ra.Next(0, 30)]];
                 objs[2] = objects[t[ra.Next(0, 30)]];
             }
-            else if (gameTime >= 240 && gameTime <= 320)
+            else if (gameTime >= 480 && gameTime <= 640)
             {
                 //9:15:6
                 int[] t = new int[30];
@@ -555,7 +569,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 objs[1] = objects[t[ra.Next(0, 30)]];
                 objs[2] = objects[t[ra.Next(0, 30)]];
             }
-            else if (gameTime >= 320 && gameTime <= 400)
+            else if (gameTime >= 640 && gameTime <= 800)
             {
                 //6:9:15
                 int[] t = new int[30];
@@ -584,7 +598,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 objs[1] = objects[t[ra.Next(0, 30)]];
                 objs[2] = objects[t[ra.Next(0, 30)]];
             }
-            else if (gameTime >= 400 && gameTime <= 480)
+            else if (gameTime >= 800 && gameTime <= 960)
             {
                 //3:6:21
                 int[] t = new int[30];
@@ -618,7 +632,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 money += objs[i].buyprice;
             }
             money = money * 1.2f;
-            CreateNewOrder(objs, money, 60);
+            CreateNewOrder(objs, money, 160);
 
 
         }
@@ -746,8 +760,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         objects[(int)Element.Linen].sprite = allObjectsSprite[7];
 
         objects[(int)Element.PolyesterCloth].name = Element.PolyesterCloth;
-        objects[(int)Element.PolyesterCloth].ingredients[0] = new Ingredient() { obj = objects[(int)Element.PolyesterThread], num = 2 };
-        objects[(int)Element.PolyesterCloth].ingredients[1] = new Ingredient() { obj = objects[(int)Element.CottonThread], num = 1 };
+        objects[(int)Element.PolyesterCloth].ingredients[0] = new Ingredient() { obj = objects[(int)Element.PolyesterThread], num = 3 };
         objects[(int)Element.PolyesterCloth].sprite = allObjectsSprite[8];
 
 

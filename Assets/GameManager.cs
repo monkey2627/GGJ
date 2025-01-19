@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public GameObject startUIPanel;
     public GameObject moneyAndSprite;
     public GameObject materialsPanel;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject lingtWhileGame;
     float allGameTime = 480;
     float alreadyGameTime =0;
+    public int bubbleNumber = 0;
     //随机数
     private static readonly System.Random ra = new System.Random(unchecked((int)DateTime.Now.Ticks));
     //音效
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         alreadyGameTime = 0;
         AkSoundEngine.PostEvent("Music_Explore", gameObject);
     }
@@ -54,8 +57,10 @@ public class GameManager : MonoBehaviour
             money += objs[i].buyprice;
         }
         money = money * 1.2f;
-        OrderManager.instance.CreateNewOrder(objs, money, 60);
+        OrderManager.instance.CreateNewOrder(objs, money, 160);
         OrderManager.instance.gameStart = true;
+        //奶奶开始动
+        OrderManager.instance.grandma.GetComponent<Animator>().SetBool("gameStart", true);
 
     }
     public void ExitAllGame()
@@ -69,13 +74,16 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        alreadyGameTime += Time.deltaTime;
-        if(alreadyGameTime > allGameTime)
+        if(bubbleNumber > 100)
         {
-            //游戏结束,
-           // moneyAndSprite.SetActive(false);
-            //materialsPanel.SetActive(false);
+            //游戏结束
 
+            moneyAndSprite.SetActive(false);
+            materialsPanel.SetActive(false);
+            bubble1.GetComponent<bubble>().gameStart = false;
+            bubble2.GetComponent<bubble>().gameStart = false;
+            OrderManager.instance.gameStart = false;
+            OrderManager.instance.grandma.GetComponent<Animator>().SetBool("isworking", false);
 
         }
         if (Input.GetKeyDown(KeyCode.Q))

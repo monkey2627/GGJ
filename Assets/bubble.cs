@@ -10,6 +10,7 @@ public class bubble : MonoBehaviour
     public float x;
     public float y;
     public bool gameStart = false;
+    
     //随机数
     private static readonly System.Random ra = new System.Random(unchecked((int)DateTime.Now.Ticks));
     void Start()
@@ -39,7 +40,7 @@ public class bubble : MonoBehaviour
             if (generateTime > max_)
             {
 
-
+                GameManager.instance.bubbleNumber += 1;
                 GameObject image = Resources.Load("prefabs/b" + ra.Next(1, 3).ToString()) as GameObject;
                 image = Instantiate(image);
                 image.transform.SetParent(gameObject.transform);
@@ -58,6 +59,7 @@ public class bubble : MonoBehaviour
     {
         for(int i = 0; i < num; i++)
         {
+            GameManager.instance.bubbleNumber += 1;
             GameObject image = Resources.Load("prefabs/b" + ra.Next(1, 3).ToString()) as GameObject;
             //气泡生成
             AkSoundEngine.PostEvent("Object_Bubble_Generate", gameObject);

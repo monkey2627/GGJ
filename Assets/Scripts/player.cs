@@ -75,10 +75,10 @@ public class player : MonoBehaviour
                     }
                     else if (clickedObject.layer == 14)//点击了object,用layer来
                     {
-                        if(clickThingsInWorkShop && objInWorkShop != null)//上一次点的工作站上的物品
+                        if(clickThingsInWorkShop && objInWorkShop != null && !(clickedObject.transform.parent != null && clickedObject.transform.parent.name == "WorkShop"))//上一次点的工作站上的物品
                         {
                             StartPortFromWorkShop();}
-                        else if(clickThingsInLoom && objInLoom != null)
+                        else if(clickThingsInLoom && objInLoom != null && !(clickedObject.transform.parent != null && clickedObject.transform.parent.name == "Loom"))
                         {
                             StartPortFromLoom();
                         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3428053296013923524}
   - component: {fileID: 3428053296013923527}
   - component: {fileID: 3428053296013923526}
-  - component: {fileID: -6154204081675157146}
+  - component: {fileID: -2963472663852508560}
   m_Layer: 0
   m_Name: b2
   m_TagString: Untagged
@@ -107,9 +107,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: -6154204081675157146}
-          m_TargetAssemblyTypeName: BubbleEvent, Assembly-CSharp
-          m_MethodName: ClickBubble
+        - m_Target: {fileID: -2963472663852508560}
+          m_TargetAssemblyTypeName: desNumber, Assembly-CSharp
+          m_MethodName: desaNumber
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &-6154204081675157146
+--- !u!114 &-2963472663852508560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,6 +128,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3428053296013923576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb9b42f6a077d7458086c78081018eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f3aa9e283908c8468fcfdfa712131af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
