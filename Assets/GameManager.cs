@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+        alreadyGameTime = 0;
     }
+    public int lasting = 60;
     public void StartGame()
     {
         //关掉整个start
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
             money += objs[i].buyprice;
         }
         money = money * 1.2f;
-        OrderManager.instance.CreateNewOrder(objs, money, 40);
+        OrderManager.instance.CreateNewOrder(objs, money, 60);
         OrderManager.instance.gameStart = true;
 
     }
@@ -65,6 +66,10 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
+        alreadyGameTime += Time.deltaTime;
+        if(alreadyGameTime > allGameTime)
+        {
+            //游戏结束
+        }
     }
 }

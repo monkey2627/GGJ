@@ -21,11 +21,11 @@ public class WorkShop : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Vector3 pos1;
+            Vector3 pos1 = new Vector3(0,0,0);
             Npc npc;
             int mark;
-            Debug.Log("点击workshop");
-            Debug.Log(player.instance.choosedObj);
+           // Debug.Log("点击workshop");
+            //Debug.Log(player.instance.choosedObj);
             if (player.instance.choosedObj != null)//选择材料了
             {
 
@@ -34,9 +34,17 @@ public class WorkShop : MonoBehaviour
                 {
                     pos1 = left.transform.position;
                 }
-                else if (mark >= 5)
+                else if (mark >= 5 && mark <=8)
                 {
                     pos1 = rightFar.transform.position;
+                }
+                else if(mark >= 9 && mark <=10)
+                {
+                   //必须买
+                   if(OrderManager.instance.objects[mark].number == 0)
+                    {
+                        return;
+                    }
                 }
                 else
                 {

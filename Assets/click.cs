@@ -51,6 +51,10 @@ public class click : MonoBehaviour, IPointerClickHandler
                         {
                             OrderManager.instance.ClearWorkShop();
                             Debug.Log("clearWorkShop");
+                        }else if (clickedObject.name == "Loom")
+                        {
+                            OrderManager.instance.ClearLoom();
+                            Debug.Log("clearLoom");
                         }
 
                     }

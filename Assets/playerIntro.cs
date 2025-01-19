@@ -18,11 +18,6 @@ public class playerIntro : MonoBehaviour
         
 
     }
-   public void Next()
-    {
-        images[now].SetActive(false);
-        images[++now].SetActive(true);
-    }
     public void Show()
     {
         images[0].SetActive(true);
