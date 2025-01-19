@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Loom : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class Loom : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+
+            //选中被点击的物体
+
+        
         Debug.Log("点击loom");
         Debug.Log(player.instance.choosedObj);   
         Vector3 pos1;
@@ -48,5 +55,5 @@ public class Loom : MonoBehaviour
                 npc.SetPos(pos1, loompos.position, 0, mark);
             }
         }
-    }
+    }}
 }

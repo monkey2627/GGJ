@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightingController : MonoBehaviour
+public class StartPanelLightingController : MonoBehaviour
 {
-    public static LightingController instance;
-    public  Light pointLIght;
-    public  Light spotLight;
+    public static StartPanelLightingController instance;
+    public  Light PointLight;
+    public Light gameStartBackLight;
     private float maxRange = 86.5f;
     private float maxIntensity = 0.76f;
     private float gap = 0.1f;
@@ -23,14 +23,24 @@ public class LightingController : MonoBehaviour
     }
 
     public IEnumerator GameStart (){
-        while(pointLIght.intensity < 1f)
+        while(PointLight.intensity > 0f)
         {
-            pointLIght.intensity +=1 * Time.deltaTime * 0.2f; 
+            PointLight.intensity -=1 * Time.deltaTime * 0.2f; 
             yield return 0;
         }
-        pointLIght.intensity = 1f;
-        
-        }    
+        PointLight.intensity = 0;
+
+    }
+    public IEnumerator solveGameStartBackLight()
+    {
+        while (gameStartBackLight.intensity > 0f)
+        {
+            gameStartBackLight.intensity -= 1 * Time.deltaTime * 0.2f / 2.0f * 2.77f;
+            yield return 0;
+        }
+        gameStartBackLight.intensity = 0;
+
+    }
     public void StartLighting()
     {
         StartCoroutine(GameStart());

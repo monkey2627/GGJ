@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 5227769700789460038}
   - component: {fileID: 8464368935864664060}
   - component: {fileID: 6382972737135706522}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5227769700789460038
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7267615382727036702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.524261, y: 3.39, z: -10.303907}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.12048193, y: 0.12048193, z: 0.12048193}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}

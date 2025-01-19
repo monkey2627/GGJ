@@ -44,6 +44,7 @@ public class Npc : MonoBehaviour
                 {
                     //先织布机再货架
                     OrderManager.instance.objects[mark].inLoom -= 1;
+                    Debug.Log("inLoom: " + OrderManager.instance.objects[mark].inLoom);
                     OrderManager.instance.RefreashLoomPanel();
                 }else if (mode == 3)
                 {
@@ -66,7 +67,10 @@ public class Npc : MonoBehaviour
                 }
                 else if (mode == 1)
                 {//先货架再到workshop
-                    OrderManager.instance.AddIntoWorkShop(mark);                }
+                    Debug.Log("duduud"+gameObject.name+goingTosecondPos);
+                    OrderManager.instance.AddIntoWorkShop(mark);
+                    Debug.Log("out");
+                        }
                 else if (mode == 2)
                 {
                     //先织布机再货架
@@ -77,9 +81,11 @@ public class Npc : MonoBehaviour
                     //先workshop后货架
                     OrderManager.instance.PortObject2Guizi(mark);
                 }
+                Debug.Log("hah4");
                 gameObject.transform.Find("material").GetComponent<SpriteRenderer>().sprite = null;
+                Debug.Log("hah3");
                 gameObject.transform.DOMove(oriPos, 1f, false);
-
+                Debug.Log("hah1");
                 goingTosecondPos = false;
                 goingToOri = true;
             }

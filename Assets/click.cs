@@ -34,26 +34,34 @@ public class click : MonoBehaviour, IPointerClickHandler
     float time = 0;
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (Time.realtimeSinceStartup - time < 0.2f)
+            if (Input.GetMouseButtonDown(0))
             {
-
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Time.realtimeSinceStartup - time < 0.2f)
                 {
-                    // 射线与物体相交，处理鼠标点击事件
-                    GameObject clickedObject = hit.collider.gameObject;
-                    if (clickedObject.name == "WorkShop")
-                    {
-                        OrderManager.instance.ClearWorkShop();
-                        Debug.Log("clearWorkShop");
-                    }
 
-}                }
-            else
-                time = Time.realtimeSinceStartup;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        // 射线与物体相交，处理鼠标点击事件
+                        GameObject clickedObject = hit.collider.gameObject;
+                        if (clickedObject.name == "WorkShop")
+                        {
+                            OrderManager.instance.ClearWorkShop();
+                            Debug.Log("clearWorkShop");
+                        }else if (clickedObject.name == "Loom")
+                        {
+                            OrderManager.instance.ClearLoom();
+                            Debug.Log("clearLoom");
+                        }
+
+                    }
+                }
+                else
+                    time = Time.realtimeSinceStartup;
+            }
         }
     }
 }

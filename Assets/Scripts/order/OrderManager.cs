@@ -10,7 +10,10 @@ public class OrderManager : MonoBehaviour
 {
     //
     public static OrderManager instance;
-
+    //
+    public Sprite[] combineSprites;
+    //
+    public GameObject panel;
     //存所有的图像，和element对应
     public Sprite[] allObjectsSprite = new Sprite[100];
     //每个订单和一个实体物体map
@@ -63,7 +66,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         looms.Add(objects[number]);
         if(looms.Count == 3)//满三个了，开始织布,增加材料以及减少材料
         {
-            int[] a = new int[5];
+            int[] a = new int[6];
             for (int i = 0; i < 5; i++)
                 a[i] = 0;
             for (int i = 0; i < 3; i++)
@@ -77,8 +80,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                     loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
                 {
-                  
-                    Debug.Log((int)looms[i].name);
+                 
                     objects[(int)looms[i].name].number -= 1; } looms.Clear();
             }
             else if (a[2] == 3)
@@ -121,12 +123,15 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     public GameObject[] workShopIcon;
     public void AddIntoWorkShop(int number)
     {
+        Debug.Log(workShops.Count);
+        Debug.Log(number);
         workShopIcon[workShops.Count].GetComponent<Image>().sprite = objects[number].sprite;
         workShopIcon[workShops.Count].GetComponent<Image>().color = new Color(workShopIcon[workShops.Count].GetComponent<Image>().color.r, workShopIcon[workShops.Count].GetComponent<Image>().color.g, workShopIcon[workShops.Count].GetComponent<Image>().color.b, 255);
         workShops.Add(objects[number]);
-        if (workShops.Count == 3)//满三个了，开始造东西
+       if (workShops.Count == 3)//满三个了，开始造东西
         {
-            int[] a = new int[5];
+            Debug.Log("GetThree");
+            int[] a = new int[30];
             for (int i = 0; i < 5; i++)
                 a[i] = 0;
             for (int i = 0; i < 3; i++)
@@ -139,20 +144,26 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
-                    objects[(int)workShops[i].name].number -= 1; 
+                    objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
             }
             else if (a[8] == 1 && a[6] == 1 && a[2] == 1)
             {
+                Debug.Log("yy");
                 isMakingNumber = 12;
                 isMaking = true;
                 for (int i = 0; i < 3; i++)
                     workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
                 for (int i = 0; i < 3; i++)
-                    objects[(int)workShops[i].name].number -= 1; 
+                    objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
             }
-            else if (a[6] == 1 && a[7] == 1 && a[2] == 1)
+            else
+            {
+                isMaking = false;
+                return;
+            }/*
+          else if (a[6] == 1 && a[7] == 1 && a[2] == 1)
             {
                 //亚麻 7
                 isMakingNumber = 13;
@@ -229,7 +240,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
-            }
+            }*/
             RefreashMaterialPanel();
             
         }
@@ -239,7 +250,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     public bool isMaking = false;
     public TMP_Text[] numbers = new TMP_Text[19];
     //刷新面板上材料个数
-    void RefreashMaterialPanel()
+    public void RefreashMaterialPanel()
     {
         for(int i = 5; i < 19; i++)
         {
@@ -253,29 +264,30 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         // 不同情况改变不同贴图
          if((int)objects[i].inShelves >= 3)
         {
-            showForCloset[i].SetActive(true);
-            showForCloset[i].transform.GetChild(0).gameObject.SetActive(true);
-            showForCloset[i].transform.GetChild(1).gameObject.SetActive(true);
+            showForCloset[i-5].SetActive(true);
+            showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(true);
+            showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(true);
           
             
         }
         else if((int)objects[i].inShelves == 2)
                 {  
-            showForCloset[i].SetActive(true);
-            showForCloset[i].transform.GetChild(0).gameObject.SetActive(true);
-            showForCloset[i].transform.GetChild(1).gameObject.SetActive(false);
+            showForCloset[i-5].SetActive(true);
+            showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(true);
+            showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(false);
           
         }
         else if((int)objects[i].inShelves == 1)
                 {
-            showForCloset[i].SetActive(true);
-            showForCloset[i].transform.GetChild(0).gameObject.SetActive(false);
-            showForCloset[i].transform.GetChild(1).gameObject.SetActive(false);
+            Debug.Log("lalla");
+            showForCloset[i-5].SetActive(true);
+            showForCloset[i-5].transform.GetChild(0).gameObject.SetActive(false);
+            showForCloset[i-5].transform.GetChild(1).gameObject.SetActive(false);
             
         }
         else if((int)objects[i].inShelves == 0)
                 {
-                showForCloset[i].SetActive(false);
+                showForCloset[i-5].SetActive(false);
                     
                 }
 
@@ -328,13 +340,9 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 isMaking = false;
                 makingTime = 0;
                 objects[isMakingNumber].number += 1;
-                //实例化一个放在桌子上
-                GameObject sprite = Resources.Load(isMakingNumber.ToString()) as GameObject;
+                objects[isMakingNumber].inWorkShop += 1;
+                RefreshWorkShopSprite(isMakingNumber);
                 RefreashMaterialPanel();
-                sprite.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
-                sprite.layer = 14;
-                sprite.transform.parent = workShop.transform;
-                //位置     
             }
         }
         if (isSewing)
@@ -349,13 +357,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 objects[isSewingNumber].inLoom += 1;
                 RefreashMaterialPanel();
                 RefreashLoomPanel();
-                //实例化一个放在桌子上
-                GameObject sprite = Resources.Load("prefabs/" + isSewingNumber.ToString()) as GameObject;
-                sprite =  Instantiate(sprite);
-                sprite.transform.parent = loom.transform;
-                sprite.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                sprite.layer = 14;
-                //位置
+                
             }
         }
 
@@ -379,6 +381,12 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         for (int i = 0; i < 3; i++)
             workShopIcon[i].GetComponent<Image>().color = new Color(workShopIcon[i].GetComponent<Image>().color.r, workShopIcon[i].GetComponent<Image>().color.g, workShopIcon[i].GetComponent<Image>().color.b, 0);
         workShops.Clear();
+    }
+    public void ClearLoom()
+    {
+        for (int i = 0; i < 3; i++)
+            loomIcon[i].GetComponent<Image>().color = new Color(loomIcon[i].GetComponent<Image>().color.r, loomIcon[i].GetComponent<Image>().color.g, loomIcon[i].GetComponent<Image>().color.b, 0);
+        looms.Clear();
     }
     public void RefreshWorkShopSprite(int number)
     {
@@ -421,6 +429,11 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         if (singleTime > 14)
         {            
             singleTime = 0;
+            if(allOrders.Count >= 5)
+            {
+                //最多五个订单
+                return;
+            }
             Object[] objs = new Object[3];
             float money = 0;
             if (gameTime <= 80)
@@ -573,7 +586,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 money += objs[i].buyprice;
             }
             money = money * 1.2f;
-            CreateNewOrder(objs, money, 40);
+            CreateNewOrder(objs, money, 60);
 
 
         }
@@ -604,9 +617,15 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             if(fit == 3)
             {
                 //这个订单可以被完成,改变UI
+                orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color = new Color(orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.r, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.g, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.b, 255);
+            }
+            else
+            {
+                orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color = new Color(orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.r, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.g, orderDic[allOrders[j]].transform.Find("complete").GetComponent<Image>().color.b, 0);
             }
         }
     }
+    public GameObject[] bubbles;
     void UpdateRemainTime()
     {
         for(int i = 0; i < allOrders.Count; i++)
@@ -617,6 +636,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             {
                     //可以考虑做一个消失的效果？？
                 Destroy(orderDic[allOrders[i]]);
+                bubbles[0].GetComponent<bubble>().Generate(30);
                 //从allOrders移除
                 allOrders.RemoveAt(i);
             }
@@ -633,8 +653,10 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         gameObject.transform.parent = GameObject.Find("OrderManager").transform;
         //创建新订单
         Order order = new Order() { objects = objects,allTime=time,remainTime=time,money=money,complete=0};
-        order.slider = gameObject.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
-        order.compleSlider = gameObject.transform.GetChild(0).GetChild(4).GetComponent<Slider>();
+       
+        order.slider = gameObject.transform.GetChild(0).GetChild(1).GetComponent<Slider>();
+        order.compleSlider = gameObject.transform.GetChild(0).GetChild(5).GetComponent<Slider>();
+                                  
         //关联
         orderDic.Add(order, gameObject);
         objDic.Add(gameObject, order);
@@ -643,9 +665,9 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         order.compleSlider.value = 0;
         gameObject.transform.position = startPos;
         //显示图标
-        gameObject.transform.gameObject.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = objects[0].sprite;
-        gameObject.transform.gameObject.transform.GetChild(0).GetChild(2).GetComponent<Image>().sprite = objects[1].sprite;
-        gameObject.transform.gameObject.transform.GetChild(0).GetChild(3).GetComponent<Image>().sprite = objects[2].sprite;
+        gameObject.transform.gameObject.transform.GetChild(0).Find("0").GetComponent<Image>().sprite = objects[0].sprite;
+        gameObject.transform.gameObject.transform.GetChild(0).Find("1").GetComponent<Image>().sprite = objects[1].sprite;
+        gameObject.transform.gameObject.transform.GetChild(0).Find("2").GetComponent<Image>().sprite = objects[2].sprite;
         //加入allOrders
         allOrders.Add(order);
         //集体右移

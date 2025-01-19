@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class player : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class player : MonoBehaviour
     void Start()
     {
         instance = this;
-        money = 0;
+        money =0;
         sprites = new List<GameObject>();
         moneyText.text = "0";
         spriteNumberText.text = "0";
@@ -58,14 +59,16 @@ public class player : MonoBehaviour
                     moneyText.text = ((int)money).ToString();
 
                 }
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
-                Debug.Log(clickedObject.name);
+               //Debug.Log(clickedObject.name);
                     //如果点击的是已经可以完成的订单,就完成订单
                     if(clickedObject.name == "order")
                     {
                         choosedObj = null;
-                        clickThingsInWorkShop = false;
+                    Debug.Log(1);
+                    clickThingsInWorkShop = false;
+                    clickThingsInLoom = false;
                         if (OrderManager.instance.objDic[clickedObject].complete == 1)
                             OrderManager.instance.FinishOrder(clickedObject);
                     }
@@ -80,20 +83,28 @@ public class player : MonoBehaviour
                         }
 
                         choosedObj = clickedObject;
-                        if(clickedObject.transform.parent!=null && clickedObject.transform.parent.name == "WorkShop")
+                        //如果点击的物品在workShop或者Loom上
+                        if(clickedObject.transform.parent !=null && clickedObject.transform.parent.name == "WorkShop")
                         {
-                        Debug.Log("yes");
+                            Debug.Log("fromWorkShop");
                             clickThingsInWorkShop = true;
                             objInWorkShop = clickedObject;
-                        }
-                        if(clickedObject.transform.parent != null && clickedObject.transform.parent.name == "Loom")
+                            Debug.Log(clickThingsInWorkShop);
+                    } else if(clickedObject.transform.parent != null && clickedObject.transform.parent.name == "Loom")
                         {
+                            Debug.Log("fromLoom");
                             clickThingsInLoom = true;
                             objInLoom= clickedObject;
-                        }
+                    }else
+                    {
+                        clickThingsInWorkShop = false;
+                        Debug.Log(2);
+                        clickThingsInLoom = false;
+                    }
                     }
                 else if (clickedObject.transform.parent.name== "rightclosetfar")
                 {
+                    Debug.Log("rightclosetfar");
                     if (clickThingsInLoom)
                     {
                         StartPortFromLoom();
@@ -103,8 +114,9 @@ public class player : MonoBehaviour
                     }
                     clickThingsInLoom = false;
                     clickThingsInWorkShop = false;
+                    Debug.Log(3);
                 }
-                else if (clickedObject.transform.parent.name == "rightclosetclose")
+                else if (clickedObject.transform.parent.name == "rightclosetclose" || clickedObject.name == "rightclosetclos")
                 {
                     if (clickThingsInLoom)
                     {
@@ -116,27 +128,71 @@ public class player : MonoBehaviour
                     }
                     clickThingsInLoom = false;
                     clickThingsInWorkShop = false;
+                    Debug.Log(4);
                 }
-                else if (clickedObject.transform.parent.name == "leftCloset")
+                else if (clickedObject.transform.parent.name == "leftCloset" || clickedObject.name=="leftCloset")
                 {
+                    Debug.Log("leftCloset");
+                    Debug.Log(clickThingsInWorkShop);
                     if (clickThingsInLoom)
                     {
                         StartPortFromLoom();
                     }
                     else if (clickThingsInWorkShop)
                     {
+                        Debug.Log("StartPortFromWorkShop");
                         StartPortFromWorkShop();
                     }
                     clickThingsInLoom = false;
                     clickThingsInWorkShop = false;
+                    Debug.Log(5);
                 }
-                else{
+                else if (clickedObject.layer == 16)
+                {
+                    
+                        Buy(int.Parse(clickedObject.name));
+                    
+                }else{
                         choosedObj = null;
                         clickThingsInWorkShop = false;
-                        clickThingsInLoom = false;
-                }
+                    Debug.Log(6);
+                    clickThingsInLoom = false;
+                } 
             
+                }else if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject())
+                {
+                    Debug.Log(clickedObject.name);
+                    //如果点击的是已经可以完成的订单,就完成订单
+                    if (clickedObject.layer == 9)
+                    {
+                        choosedObj = null;
+                        Debug.Log(1);
+                        clickThingsInWorkShop = false;
+                        clickThingsInLoom = false;
+                        if (OrderManager.instance.objDic[clickedObject].complete == 1)
+                            OrderManager.instance.FinishOrder(clickedObject);
+                        else
+                        {
+                        clickedObject.GetComponent<showGuide>().Show();
+                        }
+                    }else if (clickedObject.layer == 16)
+                {
+                    Debug.Log("buy");
+
+                    Buy(int.Parse(clickedObject.name));
+
                 }
+
+            }
+            else if (Input.GetMouseButtonDown(1) )
+            {
+                if (clickedObject.layer == 16)
+                {
+                    
+                        Sold(int.Parse(clickedObject.name));
+                    
+                }
+            }
         
         
         }
@@ -161,7 +217,7 @@ public class player : MonoBehaviour
         npc = NpcManager.Instance.FindHaveTimeNpc();
         if (npc != null)//有空闲的Npc
         {
-            npc.SetPos(workShop.position, rightFar.transform.position, 2, mark);
+            npc.SetPos(loom.position, rightFar.transform.position, 2, mark);
         }
     }
     public void FinishOrder(Order order)
@@ -171,14 +227,26 @@ public class player : MonoBehaviour
     }
     
     //买东西
-    public void Buy(string name)
+    public void Buy(int number)
     {
+        if(money > OrderManager.instance.objects[number].buyprice)
+        {
+            money -= OrderManager.instance.objects[number].buyprice;
+            moneyText.text = ((int)money).ToString();
+            OrderManager.instance.objects[number].number += 1;
+            OrderManager.instance.RefreashMaterialPanel();
+        }
         
+
     }
     //卖东西
-    public void Sold(string name)
+    public void Sold(int number)
     {
-
+        if (OrderManager.instance.objects[number].number > 0) { 
+            money += OrderManager.instance.objects[number].sellprice;
+        moneyText.text = ((int)money).ToString();
+        OrderManager.instance.objects[number].number -= 1;
+        OrderManager.instance.RefreashMaterialPanel(); }
 
     }
 }

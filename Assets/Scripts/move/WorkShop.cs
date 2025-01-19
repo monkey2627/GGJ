@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WorkShop : MonoBehaviour
 {
@@ -17,33 +18,45 @@ public class WorkShop : MonoBehaviour
     {
     }
     private void OnMouseDown()
-    {    
-        Vector3 pos1;
-        Npc npc;
-        int mark;
-        Debug.Log("点击workshop");
-        Debug.Log(player.instance.choosedObj);
-        if (player.instance.choosedObj != null)//选择材料了
+    {
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            
-            mark = int.Parse(player.instance.choosedObj.name);
-            if(mark >= 9)
+            Vector3 pos1 = new Vector3(0,0,0);
+            Npc npc;
+            int mark;
+           // Debug.Log("点击workshop");
+            //Debug.Log(player.instance.choosedObj);
+            if (player.instance.choosedObj != null)//选择材料了
             {
-                pos1 = left.transform.position;
-            }else if(mark >= 5)
-            {
-                pos1 = rightFar.transform.position;
-            }
-            else
-            {
-                pos1 = rightClose.transform.position;
-            }
-            npc = NpcManager.Instance.FindHaveTimeNpc();
-            if (npc!=null)//有空闲的Npc
-            {
-                npc.SetPos(pos1, workShop.position, 1, mark);
-            }
-        }
 
+                mark = int.Parse(player.instance.choosedObj.name);
+                if (mark >= 9)
+                {
+                    pos1 = left.transform.position;
+                }
+                else if (mark >= 5 && mark <=8)
+                {
+                    pos1 = rightFar.transform.position;
+                }
+                else if(mark >= 9 && mark <=10)
+                {
+                   //必须买
+                   if(OrderManager.instance.objects[mark].number == 0)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    pos1 = rightClose.transform.position;
+                }
+                npc = NpcManager.Instance.FindHaveTimeNpc();
+                if (npc != null)//有空闲的Npc
+                {
+                    npc.SetPos(pos1, workShop.position, 1, mark);
+                }
+            }
+
+        }
     }
 }
