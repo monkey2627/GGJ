@@ -24,10 +24,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         alreadyGameTime = 0;
+        AkSoundEngine.PostEvent("Music_Explore", gameObject);
     }
     public int lasting = 60;
     public void StartGame()
     {
+        AkSoundEngine.PostEvent("UI_Confirm", gameObject);
         //关掉整个start
         startUIPanel.SetActive(false);
         //显示资源面板
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
     }
     public void ExitAllGame()
     {
+        AkSoundEngine.PostEvent("UI_Confirm", gameObject);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else 
@@ -69,7 +72,15 @@ public class GameManager : MonoBehaviour
         alreadyGameTime += Time.deltaTime;
         if(alreadyGameTime > allGameTime)
         {
-            //游戏结束
+            //游戏结束,
+           // moneyAndSprite.SetActive(false);
+            //materialsPanel.SetActive(false);
+
+
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ExitAllGame();
         }
     }
 }

@@ -59,6 +59,8 @@ public class bubble : MonoBehaviour
         for(int i = 0; i < num; i++)
         {
             GameObject image = Resources.Load("prefabs/b" + ra.Next(1, 3).ToString()) as GameObject;
+            //ÆøÅÝÉú³É
+            AkSoundEngine.PostEvent("Object_Bubble_Generate", gameObject);
             image = Instantiate(image);
             image.transform.parent = gameObject.transform;
             generateTime = 0;
@@ -71,4 +73,5 @@ public class bubble : MonoBehaviour
             // image.GetComponent<RectTransform>().position = new Vector3(image.GetComponent<RectTransform>().position.x, image.GetComponent<RectTransform>().position.y,0);
         }
     }
+ 
 }

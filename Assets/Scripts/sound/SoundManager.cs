@@ -20,8 +20,8 @@ public class SoundManager : MonoBehaviour
     }
     private void Update()
     {
-        u += Time.deltaTime;
-        AkSoundEngine.SetRTPCValue("Whole_Volume", u*10);
+       /* u += Time.deltaTime;
+        AkSoundEngine.SetRTPCValue("Whole_Volume", u*10);*/
         
     }
 

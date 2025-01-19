@@ -32,7 +32,7 @@ public class OrderManager : MonoBehaviour
     public int[] hard = new int[5];
     //
     Vector3 startPos = new Vector3(-23.3f, 14.6f, -6.9f);
-    Vector3 gap = new Vector3(4.75f, 0, 0);
+    Vector3 gap = new Vector3(4.5f, 0, 0);
     //
     public bool gameStart;
     public GameObject loom;
@@ -51,6 +51,10 @@ public class OrderManager : MonoBehaviour
         GetCombineTabel();
         initHardLevel();
     }
+    private void Start()
+    {
+        animator = grandma.GetComponent<Animator>();
+    }
     public List<Object> looms;
     public GameObject[] loomIcon;
     //加尔u工作
@@ -64,8 +68,12 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         loomIcon[looms.Count].GetComponent<Image>().sprite = objects[number].sprite;
         loomIcon[looms.Count].GetComponent<Image>().color  =  new Color(loomIcon[looms.Count].GetComponent<Image>().color.r, loomIcon[looms.Count].GetComponent<Image>().color .g, loomIcon[looms.Count].GetComponent<Image>().color.b,255);
         looms.Add(objects[number]);
-        if(looms.Count == 3)//满三个了，开始织布,增加材料以及减少材料
+        //精灵放下物品
+        AkSoundEngine.PostEvent("Player_Drop", gameObject);
+        if (looms.Count == 3)//满三个了，开始织布,增加材料以及减少材料
         {
+            //织布机运作
+            AkSoundEngine.PostEvent("Ambient_LoomWork_Play", gameObject);
             int[] a = new int[6];
             for (int i = 0; i < 5; i++)
                 a[i] = 0;
@@ -114,7 +122,10 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                     objects[(int)looms[i].name].number -= 1;
                 looms.Clear();
             }
-            
+            //织布机停止运作
+            AkSoundEngine.PostEvent("Ambient_LoomWork_Stop", gameObject);
+            //织布机完成生产
+            AkSoundEngine.PostEvent("Object_Loom_Finish", gameObject);
             RefreashMaterialPanel();
         }
     }
@@ -128,8 +139,16 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         workShopIcon[workShops.Count].GetComponent<Image>().sprite = objects[number].sprite;
         workShopIcon[workShops.Count].GetComponent<Image>().color = new Color(workShopIcon[workShops.Count].GetComponent<Image>().color.r, workShopIcon[workShops.Count].GetComponent<Image>().color.g, workShopIcon[workShops.Count].GetComponent<Image>().color.b, 255);
         workShops.Add(objects[number]);
-       if (workShops.Count == 3)//满三个了，开始造东西
+        //精灵放下物品
+        AkSoundEngine.PostEvent("Player_Drop", gameObject);
+
+        if (workShops.Count == 3)//满三个了，开始造东西
         {
+            //缝纫机停止空转
+            AkSoundEngine.PostEvent("Ambient_MachineWork_Stop", gameObject);
+
+            //奶奶制作（奶奶使用缝纫机）
+            AkSoundEngine.PostEvent("Ambient_GrandmaWork_Play", gameObject);
             Debug.Log("GetThree");
             int[] a = new int[30];
             for (int i = 0; i < 5; i++)
@@ -158,11 +177,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                     objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
             }
-            else
-            {
-                isMaking = false;
-                return;
-            }/*
+           
           else if (a[6] == 1 && a[7] == 1 && a[2] == 1)
             {
                 //亚麻 7
@@ -240,7 +255,16 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
-            }*/
+            } else
+            {
+                isMaking = false;
+                return;
+            }/**/
+            //奶奶制作结束
+            AkSoundEngine.PostEvent("Ambient_GrandmaWork_Stop", gameObject);
+
+            //机器运作(缝纫机空转）
+            AkSoundEngine.PostEvent("Ambient_MachineWork_Play", gameObject);
             RefreashMaterialPanel();
             
         }
@@ -319,6 +343,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     bool isSewing = false;
     float sewingTime = 0;
     int isSewingNumber = 0;
+    public GameObject grandma;
+    private Animator animator;
     private void Update()
     {
       
@@ -333,10 +359,14 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         }
         if (isMaking)
         {
+            animator.SetBool("isworking", true);
             makingTime += Time.deltaTime;
             if(makingTime > 4f)
             {
                 Debug.Log("制作完成");
+                //订单完成
+                AkSoundEngine.PostEvent("Object_Order_Finish", gameObject);
+                animator.SetBool("isworking", false);
                 isMaking = false;
                 makingTime = 0;
                 objects[isMakingNumber].number += 1;
@@ -348,9 +378,11 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         if (isSewing)
         {
             sewingTime += Time.deltaTime;
+            animator.SetBool("isworking", true);
             if (sewingTime > 2f)
             {
                 Debug.Log("织布完成:"+isSewingNumber);
+                animator.SetBool("isworking",false);
                 isSewing = false;
                 sewingTime = 0;
                 objects[isSewingNumber].number += 1;
@@ -634,7 +666,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
             allOrders[i].slider.value = allOrders[i].remainTime / allOrders[i].allTime;
             if(allOrders[i].remainTime < 0)
             {
-                    //可以考虑做一个消失的效果？？
+                //可以考虑做一个消失的效果？？
+                AkSoundEngine.PostEvent("Object_Order_Miss", gameObject);
                 Destroy(orderDic[allOrders[i]]);
                 bubbles[0].GetComponent<bubble>().Generate(30);
                 //从allOrders移除
@@ -649,6 +682,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         //加载预制体
         GameObject gameObject = Resources.Load("order") as GameObject;
         //实例化预制体
+        AkSoundEngine.PostEvent("Object_Order_Appear", gameObject);
         gameObject =  GameObject.Instantiate(gameObject);
         gameObject.transform.parent = GameObject.Find("OrderManager").transform;
         //创建新订单
@@ -673,6 +707,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         //集体右移
         foreach (Order o in allOrders)
         {
+            AkSoundEngine.PostEvent("Object_Order_Move", gameObject);
             orderDic[o].transform.DOMoveX(orderDic[o].transform.position.x+gap.x, 2f, false);
         }
     }

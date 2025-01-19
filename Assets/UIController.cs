@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour
     }
     public void OpenSettings()
     {
+        AkSoundEngine.PostEvent("UI_Confirm", gameObject);
         gameObject.transform.Find("SettingsPanel").gameObject.SetActive(true);
     }
     public void CloseSettings()

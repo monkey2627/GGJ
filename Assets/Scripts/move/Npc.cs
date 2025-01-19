@@ -35,22 +35,29 @@ public class Npc : MonoBehaviour
 
                 if (mode == 0)
                 { //先到货架到再到织布机，只可能背线
-                    
-                }else if(mode == 1)
+                    AkSoundEngine.PostEvent("Player_Grab", gameObject);
+
+                }
+                else if(mode == 1)
                 {//先货架再到workshop
                    OrderManager.instance.objects[mark].inShelves -= 1;
                    OrderManager.instance.RefreshBoardSprite(mark);
-                }else if(mode == 2)
+                   AkSoundEngine.PostEvent("Player_Grab", gameObject);
+                }
+                else if(mode == 2)
                 {
                     //先织布机再货架
                     OrderManager.instance.objects[mark].inLoom -= 1;
                     Debug.Log("inLoom: " + OrderManager.instance.objects[mark].inLoom);
                     OrderManager.instance.RefreashLoomPanel();
-                }else if (mode == 3)
+                    AkSoundEngine.PostEvent("Player_Grab", gameObject);
+                }
+                else if (mode == 3)
                 {
                     //先workshop后货架
                     OrderManager.instance.objects[mark].inWorkShop -= 1;
                     OrderManager.instance.RefreshWorkShopSprite(mark);
+                    AkSoundEngine.PostEvent("Player_Grab", gameObject);
                 }
                 gameObject.transform.Find("material").GetComponent<SpriteRenderer>().sprite = OrderManager.instance.objects[mark].sprite;
                 gameObject.transform.DOMove(secondPos, 1f, false);
@@ -67,9 +74,7 @@ public class Npc : MonoBehaviour
                 }
                 else if (mode == 1)
                 {//先货架再到workshop
-                    Debug.Log("duduud"+gameObject.name+goingTosecondPos);
                     OrderManager.instance.AddIntoWorkShop(mark);
-                    Debug.Log("out");
                         }
                 else if (mode == 2)
                 {
@@ -81,11 +86,8 @@ public class Npc : MonoBehaviour
                     //先workshop后货架
                     OrderManager.instance.PortObject2Guizi(mark);
                 }
-                Debug.Log("hah4");
                 gameObject.transform.Find("material").GetComponent<SpriteRenderer>().sprite = null;
-                Debug.Log("hah3");
                 gameObject.transform.DOMove(oriPos, 1f, false);
-                Debug.Log("hah1");
                 goingTosecondPos = false;
                 goingToOri = true;
             }

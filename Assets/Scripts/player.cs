@@ -47,6 +47,7 @@ public class player : MonoBehaviour
                     //³öÊÛ
                     money += OrderManager.instance.objects[int.Parse(clickedObject.name)].sellprice;
                     moneyText.text = ((int)money).ToString();
+                    
 
                 }else if (Input.GetKeyDown(KeyCode.D)){
                     //¹ºÂò
