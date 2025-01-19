@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044b184e346834744ba8e995f5a14ae3, type: 3}
+  m_Name: 13FCB0CB-5CB1-4905-8602-FB697ED1D555
+  m_EditorClassIdentifier: 
+  objectName: Ambient_GrandmaWork_Stop
+  id: 1972146464
+  guid: 13FCB0CB-5CB1-4905-8602-FB697ED1D555

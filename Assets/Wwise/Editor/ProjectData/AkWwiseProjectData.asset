@@ -465,7 +465,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: d2b8660e6e94f646a1562202acf262c1
     GuidInternal: 
-    m_lastTime: -8584646567174775808
+    m_lastTime: -8584645202254775808
     List:
     - name: Main
       guid: 595ba2db0021a443b1d1abceb2af0139
@@ -493,7 +493,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: be9a99277b13094dbcab7e2240415a44
     GuidInternal: 
-    m_lastTime: -8584646531114775808
+    m_lastTime: -8584645205354775808
     List:
     - name: Ambient
       guid: 0608ce8d3cf07d4e80ccabf10ab0548e
@@ -856,8 +856,8 @@ MonoBehaviour:
         guid: ba461d98a92b4f44b450aa08d65176db
       Path: Events\Default Work Unit\Non-World\Music\Music_Explore
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2725803.5
+      minDuration: 2725803.5
     - name: Music_Stop
       guid: c90c809f272fe244909c2e16ada90ca9
       id: 3227181061
@@ -918,6 +918,107 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Object_Bubble
+      guid: e41c10d8b847c94fb16dbe5ed6b04980
+      id: 1072845609
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: be9a99277b13094dbcab7e2240415a44
+      - ElementName: World
+        ObjectType: 4
+        guid: dbdf88aafc1a374cbec422b417c64452
+      - ElementName: Object
+        ObjectType: 4
+        guid: 04e26d3bcdfded4fa17f889576a66254
+      - ElementName: Object_Bubble
+        ObjectType: 4
+        guid: e41c10d8b847c94fb16dbe5ed6b04980
+      Path: Events\Default Work Unit\World\Object\Object_Bubble
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Object_Bubble_Burst
+      guid: bdafa75c0de13b4a965e434ace2b68e7
+      id: 3095308478
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: be9a99277b13094dbcab7e2240415a44
+      - ElementName: World
+        ObjectType: 4
+        guid: dbdf88aafc1a374cbec422b417c64452
+      - ElementName: Object
+        ObjectType: 4
+        guid: 04e26d3bcdfded4fa17f889576a66254
+      - ElementName: Object_Bubble
+        ObjectType: 4
+        guid: e41c10d8b847c94fb16dbe5ed6b04980
+      - ElementName: Object_Bubble_Burst
+        ObjectType: 3
+        guid: bdafa75c0de13b4a965e434ace2b68e7
+      Path: Events\Default Work Unit\World\Object\Object_Bubble\Object_Bubble_Burst
+      maxAttenuation: 0
+      maxDuration: 0.7119554
+      minDuration: 0.5650794
+    - name: Object_Bubble_Generate
+      guid: 242f6babe5cb584e944663984077dece
+      id: 3954214345
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: be9a99277b13094dbcab7e2240415a44
+      - ElementName: World
+        ObjectType: 4
+        guid: dbdf88aafc1a374cbec422b417c64452
+      - ElementName: Object
+        ObjectType: 4
+        guid: 04e26d3bcdfded4fa17f889576a66254
+      - ElementName: Object_Bubble
+        ObjectType: 4
+        guid: e41c10d8b847c94fb16dbe5ed6b04980
+      - ElementName: Object_Bubble_Generate
+        ObjectType: 3
+        guid: 242f6babe5cb584e944663984077dece
+      Path: Events\Default Work Unit\World\Object\Object_Bubble\Object_Bubble_Generate
+      maxAttenuation: 0
+      maxDuration: 3.0045986
+      minDuration: 1.6862739
+    - name: Object_Bubble_Tap
+      guid: 27f5fe5e962c4740a8857641f5f910f9
+      id: 2508278091
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: be9a99277b13094dbcab7e2240415a44
+      - ElementName: World
+        ObjectType: 4
+        guid: dbdf88aafc1a374cbec422b417c64452
+      - ElementName: Object
+        ObjectType: 4
+        guid: 04e26d3bcdfded4fa17f889576a66254
+      - ElementName: Object_Bubble
+        ObjectType: 4
+        guid: e41c10d8b847c94fb16dbe5ed6b04980
+      - ElementName: Object_Bubble_Tap
+        ObjectType: 3
+        guid: 27f5fe5e962c4740a8857641f5f910f9
+      Path: Events\Default Work Unit\World\Object\Object_Bubble\Object_Bubble_Tap
+      maxAttenuation: 0
+      maxDuration: 0.62748426
+      minDuration: 0.4341962
     - name: Object_Loom
       guid: 3b71f7b12329984bb2b8e81a3102a790
       id: 1905483248
@@ -1716,7 +1817,7 @@ MonoBehaviour:
         guid: 389871bc07b92f4b8f3f8f3bd0c05cca
       Path: Triggers\Default Work Unit\Award
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 030000000500000006000000080000000d0000000e0000001800000019000000250000002600000027000000290000002c0000002d0000002f000000340000003700000038000000
+  ExpandedWaapiItemIds: 0600000007000000080000000a0000000d0000000e0000002c0000002d00000035000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
