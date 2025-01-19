@@ -94,6 +94,8 @@ public class Npc : MonoBehaviour
         {
             if ((gameObject.transform.position - oriPos).magnitude < 0.01)
             {
+                //结束移动
+                AkSoundEngine.PostEvent("Player_Stop", gameObject);
                 hasTime = true;
                 goingToOri = false;
             }
@@ -107,6 +109,8 @@ public class Npc : MonoBehaviour
 
     public void SetPos(Vector3 f,Vector3 s,int m,int mm)
     {
+        //开始移动
+        AkSoundEngine.PostEvent("Player_Move", gameObject);
         firstPos = f;
         secondPos = s;
         gameObject.transform.DOMove(f, 1f, false);

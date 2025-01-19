@@ -4936,11 +4936,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &369889255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9174079349063033046, guid: ad39b026563be0a4d91f5973015dc9ff, type: 3}
-  m_PrefabInstance: {fileID: 482799040}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &370913762
 GameObject:
   m_ObjectHideFlags: 0
@@ -6869,11 +6864,6 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6747748450241167551, guid: f9fa30302fd278a45ae85a0a54ab8fd4, type: 3}
   m_PrefabInstance: {fileID: 7271415231139811319}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &599079039 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5268852450318798425, guid: 3ad2f6b31ecdc8945ba895e6a8d37b17, type: 3}
-  m_PrefabInstance: {fileID: 1081818498}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &601413147
 BoxCollider:
@@ -16528,11 +16518,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626187123}
   m_CullTransparentMesh: 1
---- !u!1 &1633758746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5854351493566536603, guid: b431cbf28d242484595d145b3edd4c45, type: 3}
-  m_PrefabInstance: {fileID: 745386334}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1637469586
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17346,11 +17331,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1682876807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8413543505647728718, guid: d5502fdea975a254084fdea01f1a0dda, type: 3}
-  m_PrefabInstance: {fileID: 1169520069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1683344308
 GameObject:
   m_ObjectHideFlags: 0
@@ -18269,6 +18249,7 @@ GameObject:
   - component: {fileID: 1753731019}
   - component: {fileID: 1753731020}
   - component: {fileID: 1753731021}
+  - component: {fileID: 1753731022}
   m_Layer: 12
   m_Name: Loom
   m_TagString: Untagged
@@ -18388,14 +18369,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1096692de11a4498a5e20f41dbad18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loompos: {fileID: 270636621}
-  rightClose: {fileID: 1548442938}
-  forShow:
-  - {fileID: 599079039}
-  - {fileID: 1682876807}
-  - {fileID: 1633758746}
-  - {fileID: 369889255}
-  - {fileID: 0}
+--- !u!114 &1753731022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753731016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859c7ab8de0757f46a0134f8ce45a348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &1758523718
 GameObject:
   m_ObjectHideFlags: 0

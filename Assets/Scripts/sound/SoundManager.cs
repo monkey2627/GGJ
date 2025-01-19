@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
         
         //填事件名字就
         AkSoundEngine.PostEvent("Ambient_HouseMoan_Play", gameObject);
-        AkSoundEngine.PostEvent("Ambient_HouseMoan_Stop", gameObject);
+        //AkSoundEngine.PostEvent("Ambient_HouseMoan_Stop", gameObject);
     }
     public void PlaySound(string soundName, float m_SoundVolume)
     {
