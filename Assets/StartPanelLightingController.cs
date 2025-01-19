@@ -7,6 +7,7 @@ public class StartPanelLightingController : MonoBehaviour
     public static StartPanelLightingController instance;
     public  Light PointLight;
     public Light gameStartBackLight;
+    public Light Spotlight;
     private float maxRange = 86.5f;
     private float maxIntensity = 0.76f;
     private float gap = 0.1f;
@@ -43,6 +44,7 @@ public class StartPanelLightingController : MonoBehaviour
     }
     public void StartLighting()
     {
+        Spotlight.intensity = 0;
         StartCoroutine(GameStart());
         //¿ªÊ¼ÉÁ
         flicking.instance.gameStart = true;
