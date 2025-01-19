@@ -32,7 +32,7 @@ public class OrderManager : MonoBehaviour
     public int[] hard = new int[5];
     //
     Vector3 startPos = new Vector3(-23.3f, 14.6f, -6.9f);
-    Vector3 gap = new Vector3(4.75f, 0, 0);
+    Vector3 gap = new Vector3(4.5f, 0, 0);
     //
     public bool gameStart;
     public GameObject loom;
@@ -50,6 +50,10 @@ public class OrderManager : MonoBehaviour
         workShops = new List<Object>();
         GetCombineTabel();
         initHardLevel();
+    }
+    private void Start()
+    {
+        animator = grandma.GetComponent<Animator>();
     }
     public List<Object> looms;
     public GameObject[] loomIcon;
@@ -158,11 +162,7 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                     objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
             }
-            else
-            {
-                isMaking = false;
-                return;
-            }/*
+           
           else if (a[6] == 1 && a[7] == 1 && a[2] == 1)
             {
                 //亚麻 7
@@ -240,7 +240,11 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
                 for (int i = 0; i < 3; i++)
                     objects[(int)workShops[i].name].number -= 1;
                 workShops.Clear();
-            }*/
+            } else
+            {
+                isMaking = false;
+                return;
+            }/**/
             RefreashMaterialPanel();
             
         }
@@ -319,6 +323,8 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
     bool isSewing = false;
     float sewingTime = 0;
     int isSewingNumber = 0;
+    public GameObject grandma;
+    private Animator animator;
     private void Update()
     {
       
@@ -333,10 +339,12 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         }
         if (isMaking)
         {
+            animator.SetBool("isworking", true);
             makingTime += Time.deltaTime;
             if(makingTime > 4f)
             {
                 Debug.Log("制作完成");
+                animator.SetBool("isworking", false);
                 isMaking = false;
                 makingTime = 0;
                 objects[isMakingNumber].number += 1;
@@ -348,9 +356,11 @@ float height = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;*/
         if (isSewing)
         {
             sewingTime += Time.deltaTime;
+            animator.SetBool("isworking", true);
             if (sewingTime > 2f)
             {
                 Debug.Log("织布完成:"+isSewingNumber);
+                animator.SetBool("isworking",false);
                 isSewing = false;
                 sewingTime = 0;
                 objects[isSewingNumber].number += 1;

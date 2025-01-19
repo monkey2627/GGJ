@@ -69,7 +69,15 @@ public class GameManager : MonoBehaviour
         alreadyGameTime += Time.deltaTime;
         if(alreadyGameTime > allGameTime)
         {
-            //游戏结束
+            //游戏结束,
+           // moneyAndSprite.SetActive(false);
+            //materialsPanel.SetActive(false);
+
+
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ExitAllGame();
         }
     }
 }
